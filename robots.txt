@@ -1,0 +1,11 @@
+# robots.txt for 화명 현대 공부방
+# https://reading-level-up.github.io
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://reading-level-up.github.io/sitemap.xml
+
+# Crawl-delay (optional, for politeness)
+Crawl-delay: 1

@@ -1,4 +1,4 @@
-# robots.txt for 화명 현대 공부방
+# robots.txt for 화명 리드인
 # https://reading-level-up.github.io
 
 User-agent: *

@@ -455,16 +455,43 @@
                             />
                         </div>
                         <div>
-                            <label class="block text-sm font-bold text-dark-text mb-2">희망 상담 시간</label>
+                            <label class="block text-sm font-bold text-dark-text mb-2">희망 상담 날짜</label>
                             <div class="relative">
                                 <input
-                                    id="datetime"
-                                    name="datetime"
+                                    id="date"
+                                    name="date"
                                     class="w-full h-12 px-4 rounded-lg bg-white border-2 border-dark-text focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors text-dark-text font-bold"
-                                    type="datetime-local"
+                                    type="date"
                                 />
                                 <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none flex items-center justify-center">
                                     <span class="material-symbols-outlined text-dark-text/50">calendar_month</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-dark-text mb-2">희망 상담 시간</label>
+                            <div class="relative">
+                                <select
+                                    id="time"
+                                    name="time"
+                                    class="w-full h-12 px-4 rounded-lg bg-white border-2 border-dark-text focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors text-dark-text font-bold appearance-none cursor-pointer"
+                                >
+                                    <option value="">시간 선택</option>
+                                    <option value="09:00">오전 9시</option>
+                                    <option value="10:00">오전 10시</option>
+                                    <option value="11:00">오전 11시</option>
+                                    <option value="12:00">오후 12시</option>
+                                    <option value="13:00">오후 1시</option>
+                                    <option value="14:00">오후 2시</option>
+                                    <option value="15:00">오후 3시</option>
+                                    <option value="16:00">오후 4시</option>
+                                    <option value="17:00">오후 5시</option>
+                                    <option value="18:00">오후 6시</option>
+                                    <option value="19:00">오후 7시</option>
+                                    <option value="20:00">오후 8시</option>
+                                </select>
+                                <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-dark-text/50">schedule</span>
                                 </div>
                             </div>
                         </div>
@@ -568,11 +595,15 @@
             btnSpinner.classList.remove('hidden');
 
             // Collect form data
+            const dateValue = document.getElementById('date').value;
+            const timeValue = document.getElementById('time').value;
             const formData = {
                 name: document.getElementById('name').value,
                 grade: document.getElementById('grade').value,
                 phone: document.getElementById('phone').value,
-                datetime: document.getElementById('datetime').value,
+                date: dateValue,
+                time: timeValue,
+                datetime: dateValue && timeValue ? `${dateValue} ${timeValue}` : '',
                 message: document.getElementById('message').value,
                 timestamp: new Date().toISOString()
             };

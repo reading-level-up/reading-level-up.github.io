@@ -56,38 +56,6 @@
         .font-jua {
             font-family: "Jua", "sans-serif";
         }
-        /* Logo Styles */
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .logo-text-green {
-            color: #2E8B57;
-            font-weight: 800;
-            font-size: 0.7rem;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-        .logo-main {
-            display: flex;
-            align-items: center;
-            gap: 2px;
-        }
-        .logo-main-text {
-            font-weight: 900;
-            font-size: 1.5rem;
-            color: #181710;
-            letter-spacing: -0.05em;
-        }
-        .logo-book {
-            width: 1rem;
-            height: 1.5rem;
-            background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%);
-            border-radius: 2px;
-            transform: rotate(-8deg);
-            margin: 0 2px;
-        }
         /* Custom datetime-local styling */
         input[type="datetime-local"] {
             -webkit-appearance: none;
@@ -141,15 +109,8 @@
             <div class="flex items-center gap-2 flex-1">
                 <h2 class="text-dark-text text-lg font-black leading-tight tracking-[-0.02em]">화명 현대 공부방</h2>
                 <span class="text-dark-text/40 font-bold text-sm">x</span>
-                <!-- Logo Component -->
-                <div class="logo-container">
-                    <div class="logo-text-green hidden sm:block">독서<br/>테라피</div>
-                    <div class="logo-main">
-                        <span class="logo-main-text">리</span>
-                        <div class="logo-book"></div>
-                        <span class="logo-main-text">드인</span>
-                    </div>
-                </div>
+                <!-- Logo Image -->
+                <img src="assets/logo.png" alt="독서테라피 리드인 로고" class="h-8 sm:h-10 w-auto object-contain"/>
             </div>
             <div class="flex items-center justify-end">
                 <button onclick="scrollToForm()" class="bg-transparent px-3 py-1 rounded-full border-2 border-dark-text/10 text-xs font-bold hover:bg-background-light transition-colors">
@@ -226,17 +187,9 @@
                 <div class="mb-8">
                     <p class="text-action-orange font-bold text-sm mb-1">WHY HWAMYEONG HYUNDAI?</p>
                     <!-- Updated title with logo -->
-                    <h2 class="text-dark-text text-3xl font-black tracking-tight flex flex-wrap items-center gap-2">
-                        <span class="flex items-center gap-2">
-                            <span class="inline-block logo-text-green text-xs" style="line-height: 1;">독서<br/>테라피</span>
-                            <span class="logo-main inline-flex items-center">
-                                <span class="logo-main-text text-2xl">리</span>
-                                <span class="logo-book inline-block" style="width: 0.8rem; height: 1.2rem;"></span>
-                                <span class="logo-main-text text-2xl">드인</span>
-                            </span>
-                        </span>
+                    <h2 class="text-dark-text text-3xl font-black tracking-tight flex flex-wrap items-center gap-x-3 gap-y-1">
+                        <img src="assets/logo.png" alt="독서테라피 리드인 로고" class="h-10 w-auto object-contain"/>
                         <span>만의</span>
-                        <br class="md:hidden"/>
                         <span>확실한 솔루션</span>
                     </h2>
                 </div>

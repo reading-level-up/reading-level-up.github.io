@@ -12,7 +12,7 @@
     <meta name="author" content="화명 리드인"/>
     <meta name="robots" content="index, follow"/>
     <meta name="googlebot" content="index, follow"/>
-    <meta name="navergooglebot" content="index, follow"/>
+    <meta name="Yeti" content="index, follow"/>
 
     <!-- Search Engine Verification -->
     <meta name="google-site-verification" content="tWl7yM7S0bRm0GrZ1tnjBKGA3_316VAT2utVseNo4dE"/>
@@ -29,10 +29,11 @@
     <link rel="alternate" type="application/rss+xml" title="네이버 신디케이션" href="https://reading-level-up.github.io/feed.xml"/>
 
     <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png"/>
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png"/>
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png"/>
-    <link rel="shortcut icon" href="assets/favicon.ico"/>
+    <link rel="shortcut icon" href="/favicon.ico"/>
 
     <!-- Theme Color -->
     <meta name="theme-color" content="#ffdd00"/>
@@ -763,11 +764,13 @@
             e.target.value = value;
         });
 
-        // Set minimum datetime to now
-        const datetimeInput = document.getElementById('datetime');
-        const now = new Date();
-        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-        datetimeInput.min = now.toISOString().slice(0, 16);
+        // Set minimum date to today
+        const dateInput = document.getElementById('date');
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        dateInput.min = `${year}-${month}-${day}`;
 
         // Korean validation messages
         const nameInput = document.getElementById('name');

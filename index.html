@@ -278,7 +278,7 @@
         <!-- Problem Section -->
         <section class="bg-white py-12 px-4 border-b-2 border-background-light">
             <div class="max-w-lg mx-auto">
-                <div class="flex items-center gap-2 mb-6">
+                <div class="flex items-center gap-4 mb-6">
                     <span class="material-symbols-outlined text-white bg-fire-red/80 rounded-full p-1 text-2xl animate-pulse">priority_high</span>
                     <h2 class="text-dark-text text-2xl font-black tracking-tight leading-tight">혹시 이런 고민<br/>있으신가요?</h2>
                 </div>
@@ -315,8 +315,10 @@
                 <div class="mb-8">
                     <p class="text-action-orange font-bold text-sm mb-1">WHY HWAMYEONG HYUNDAI?</p>
                     <!-- Updated title with logo -->
-                    <h2 class="text-dark-text text-3xl font-black tracking-tight flex flex-wrap items-center gap-x-3 gap-y-1">
-                        <img src="assets/logo.png" alt="독서테라피 리드인 로고" class="h-10 w-auto object-contain"/>
+                    <h2 class="text-dark-text text-3xl font-black tracking-tight flex flex-wrap items-center gap-x-2 gap-y-1">
+                        <span>화명 현대</span>
+                        <span class="text-dark-text/40 font-bold text-xl">x</span>
+                        <img src="assets/logo.png" alt="독서테라피 리드인 로고" class="h-9 w-auto object-contain"/>
                         <span>만의</span>
                         <span>확실한 솔루션</span>
                     </h2>
@@ -413,10 +415,10 @@
                                     class="w-full h-12 px-4 rounded-lg bg-white border-2 border-dark-text focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors text-dark-text font-bold appearance-none cursor-pointer"
                                 >
                                     <option disabled="" selected="" value="">학년을 선택해주세요</option>
-                                    <option value="유치부">유치부 (Kindergarten)</option>
+                                    <option value="유치부">유치부</option>
                                     <option value="초등 저학년">초등 저학년 (1~3학년)</option>
                                     <option value="초등 고학년">초등 고학년 (4~6학년)</option>
-                                    <option value="중등부">중등부 (Middle School)</option>
+                                    <option value="중등부">중등부</option>
                                 </select>
                                 <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none flex items-center justify-center">
                                     <span class="material-symbols-outlined text-dark-text">expand_more</span>
@@ -624,6 +626,40 @@
         const now = new Date();
         now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
         datetimeInput.min = now.toISOString().slice(0, 16);
+
+        // Korean validation messages
+        const nameInput = document.getElementById('name');
+        const gradeSelect = document.getElementById('grade');
+        const phoneInput = document.getElementById('phone');
+
+        nameInput.addEventListener('invalid', function() {
+            if (this.validity.valueMissing) {
+                this.setCustomValidity('이름을 입력해주세요.');
+            }
+        });
+        nameInput.addEventListener('input', function() {
+            this.setCustomValidity('');
+        });
+
+        gradeSelect.addEventListener('invalid', function() {
+            if (this.validity.valueMissing) {
+                this.setCustomValidity('학년을 선택해주세요.');
+            }
+        });
+        gradeSelect.addEventListener('change', function() {
+            this.setCustomValidity('');
+        });
+
+        phoneInput.addEventListener('invalid', function() {
+            if (this.validity.valueMissing) {
+                this.setCustomValidity('연락처를 입력해주세요.');
+            } else if (this.validity.patternMismatch) {
+                this.setCustomValidity('올바른 전화번호 형식으로 입력해주세요. (예: 010-1234-5678)');
+            }
+        });
+        phoneInput.addEventListener('input', function() {
+            this.setCustomValidity('');
+        });
     </script>
 </body>
 </html>

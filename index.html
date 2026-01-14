@@ -615,38 +615,20 @@
 
             // ============================================
             // WEBHOOK URL CONFIGURATION
-            // Replace the URL below with your Google Apps Script Web App URL
-            // after deploying the script from google-apps-script.js
+            // Google Apps Script Web App URL
             // ============================================
-            const WEBHOOK_URL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL';
+            const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxzTNnRyWYJredeXX7YAYratopWmboyiqNxMt1LXv7PStINtSoD3qBBXoW8DIfCtOAu/exec';
 
             try {
-                // Check if webhook URL is configured
-                if (WEBHOOK_URL === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL') {
-                    // Demo mode - simulate successful submission
-                    console.log('Demo mode: Form data would be sent:', formData);
-                    await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
-
-                    // Show success message
-                    form.classList.add('hidden');
-                    successMessage.classList.remove('hidden');
-                    successMessage.classList.add('flex');
-
-                    return;
-                }
-
                 // Send data to Google Apps Script
-                const response = await fetch(WEBHOOK_URL, {
+                await fetch(WEBHOOK_URL, {
                     method: 'POST',
-                    mode: 'no-cors', // Required for Google Apps Script
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData)
                 });
 
-                // Since mode is 'no-cors', we can't read the response
-                // Assume success if no error is thrown
+                // Show success message
                 form.classList.add('hidden');
                 successMessage.classList.remove('hidden');
                 successMessage.classList.add('flex');

@@ -1,11 +1,21 @@
-# robots.txt for 화명 현대 공부방
+# robots.txt for 화명 리드인
 # https://reading-level-up.github.io
 
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://reading-level-up.github.io/sitemap.xml
+# Naver
+User-agent: Yeti
+Allow: /
 
-# Crawl-delay (optional, for politeness)
-Crawl-delay: 1
+# Daum
+User-agent: Daum
+Allow: /
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Sitemap & RSS Feed
+Sitemap: https://reading-level-up.github.io/sitemap.xml
+Sitemap: https://reading-level-up.github.io/feed.xml

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>화명 리드인 | 독서 논술 심리 그림책테라피 동화구연</title>
+    <link>https://reading-level-up.github.io/</link>
+    <description>화명 리드인 - 독서, 논술, 심리상담, 그림책테라피, 동화구연 전문. 학사초 명진초 용수중 화명중 인근. 무료 레벨테스트!</description>
+    <language>ko</language>
+    <lastBuildDate>Tue, 14 Jan 2026 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://reading-level-up.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://reading-level-up.github.io/assets/logo.png</url>
+      <title>화명 리드인</title>
+      <link>https://reading-level-up.github.io/</link>
+    </image>
+
+    <item>
+      <title>화명 리드인 | 독서 논술 심리 그림책테라피 동화구연 - 수정역 화명역 공부방</title>
+      <link>https://reading-level-up.github.io/</link>
+      <guid isPermaLink="true">https://reading-level-up.github.io/</guid>
+      <pubDate>Tue, 14 Jan 2026 00:00:00 +0900</pubDate>
+      <dc:creator>화명 리드인</dc:creator>
+      <description><![CDATA[
+        <p>읽지 못하면, 풀 수도 없습니다.</p>
+        <p>화명 리드인 - 독서, 논술, 심리상담, 그림책테라피, 동화구연 전문! 학사초 명진초 금명초 용수중 화명중 인근. 수정역 화명역 도보거리.</p>
+        <h3>프로그램 안내</h3>
+        <ul>
+          <li>독서 코칭 - 문해력 향상을 위한 1:1 맞춤 독서 지도</li>
+          <li>논술 교육 - 사고력과 표현력을 키우는 체계적인 논술</li>
+          <li>심리상담 - 아동심리 전문 상담, 정서 케어</li>
+          <li>그림책테라피 - 그림책을 활용한 정서 함양 및 심리 치유</li>
+          <li>동화구연 - 언어 발달과 상상력 증진 프로그램</li>
+        </ul>
+        <p>무료 레벨 테스트 신청하세요!</p>
+        <p>문의: 010-2811-4221</p>
+        <p>주소: 부산광역시 북구 화명신도시로 48</p>
+      ]]></description>
+      <category>화명 리드인</category>
+      <category>독서</category>
+      <category>논술</category>
+      <category>심리상담</category>
+      <category>그림책테라피</category>
+      <category>동화구연</category>
+      <category>수정역 공부방</category>
+      <category>화명역 공부방</category>
+    </item>
+  </channel>
+</rss>

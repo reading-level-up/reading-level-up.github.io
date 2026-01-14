@@ -15,4 +15,10 @@
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
     </url>
+    <url>
+        <loc>https://reading-level-up.github.io/naver-syndication.xml</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
 </urlset>

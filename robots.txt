@@ -21,4 +21,4 @@ Sitemap: https://readin-hwamyeong.kr/sitemap.xml
 Sitemap: https://readin-hwamyeong.kr/feed.xml
 Sitemap: https://readin-hwamyeong.kr/naver-syndication.xml
 
-#DaumWebMasterTool:30409d62265de740233b056e8f7377e2fede73506f03979b407c7588f8981903:sQsO6kD2X2xb1G1XI2e8Og==
+#DaumWebMasterTool:8486e671aecc4a03c638cd46e3bf8cf6b381d30ba3fa44ba2f4de2f41894265b:snWUuOpLy7JzL44DZhjW4Q==

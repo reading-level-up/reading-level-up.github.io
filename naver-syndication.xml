@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://webmastertool.naver.com">
-    <id>reading-level-up.github.io</id>
+    <id>readin-hwamyeong.kr</id>
     <title><![CDATA[화명 리드인 현대공부방 | 독서논술 그림책테라피 용수초점]]></title>
     <author>
         <name><![CDATA[화명 리드인 현대공부방]]></name>
-        <url>https://reading-level-up.github.io/</url>
+        <url>https://readin-hwamyeong.kr/</url>
         <email></email>
     </author>
     <updated>2026-01-14T00:00:00+09:00</updated>
-    <link rel="site" href="https://reading-level-up.github.io/" title="화명 리드인 현대공부방"/>
+    <link rel="site" href="https://readin-hwamyeong.kr/" title="화명 리드인 현대공부방"/>
 
     <entry>
-        <id>https://reading-level-up.github.io/</id>
+        <id>https://readin-hwamyeong.kr/</id>
         <title><![CDATA[화명 리드인 현대공부방 | 독서논술 그림책테라피 - 용수초 화명동 공부방]]></title>
         <author>
             <name><![CDATA[화명 리드인 현대공부방]]></name>
         </author>
         <updated>2026-01-14T00:00:00+09:00</updated>
         <published>2026-01-14T00:00:00+09:00</published>
-        <link rel="via" href="https://reading-level-up.github.io/" title="화명 리드인 현대공부방"/>
-        <link rel="mobile" href="https://reading-level-up.github.io/"/>
+        <link rel="via" href="https://readin-hwamyeong.kr/" title="화명 리드인 현대공부방"/>
+        <link rel="mobile" href="https://readin-hwamyeong.kr/"/>
         <category term="교육" label="교육"/>
         <category term="독서" label="독서"/>
         <category term="논술" label="논술"/>
@@ -54,14 +54,14 @@
     </entry>
 
     <entry>
-        <id>https://reading-level-up.github.io/#programs</id>
+        <id>https://readin-hwamyeong.kr/#programs</id>
         <title><![CDATA[화명동 독서논술 프로그램 - 초등논술 중등논술 문해력 향상]]></title>
         <author>
             <name><![CDATA[화명 리드인 현대공부방]]></name>
         </author>
         <updated>2026-01-14T00:00:00+09:00</updated>
         <published>2026-01-14T00:00:00+09:00</published>
-        <link rel="via" href="https://reading-level-up.github.io/#programs" title="독서논술 프로그램"/>
+        <link rel="via" href="https://readin-hwamyeong.kr/#programs" title="독서논술 프로그램"/>
         <category term="독서논술" label="독서논술"/>
         <category term="문해력" label="문해력"/>
         <content type="html"><![CDATA[
@@ -81,14 +81,14 @@
     </entry>
 
     <entry>
-        <id>https://reading-level-up.github.io/#location</id>
+        <id>https://readin-hwamyeong.kr/#location</id>
         <title><![CDATA[화명 리드인 위치 - 용수초 화명중 인근 수정역 화명역]]></title>
         <author>
             <name><![CDATA[화명 리드인 현대공부방]]></name>
         </author>
         <updated>2026-01-14T00:00:00+09:00</updated>
         <published>2026-01-14T00:00:00+09:00</published>
-        <link rel="via" href="https://reading-level-up.github.io/#location" title="위치 안내"/>
+        <link rel="via" href="https://readin-hwamyeong.kr/#location" title="위치 안내"/>
         <category term="화명동" label="화명동"/>
         <category term="공부방" label="공부방"/>
         <content type="html"><![CDATA[

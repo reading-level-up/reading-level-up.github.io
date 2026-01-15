@@ -4,20 +4,20 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
-        <loc>https://reading-level-up.github.io/</loc>
-        <lastmod>2026-01-14</lastmod>
+        <loc>https://readin-hwamyeong.kr/</loc>
+        <lastmod>2026-01-15</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://reading-level-up.github.io/feed.xml</loc>
-        <lastmod>2026-01-14</lastmod>
+        <loc>https://readin-hwamyeong.kr/feed.xml</loc>
+        <lastmod>2026-01-15</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://reading-level-up.github.io/naver-syndication.xml</loc>
-        <lastmod>2026-01-14</lastmod>
+        <loc>https://readin-hwamyeong.kr/naver-syndication.xml</loc>
+        <lastmod>2026-01-15</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
     </url>

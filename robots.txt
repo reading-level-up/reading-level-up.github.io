@@ -1,5 +1,5 @@
 # robots.txt for 화명 리드인
-# https://reading-level-up.github.io
+# https://readin-hwamyeong.kr
 
 User-agent: *
 Allow: /
@@ -17,8 +17,8 @@ User-agent: Googlebot
 Allow: /
 
 # Sitemap & RSS Feed
-Sitemap: https://reading-level-up.github.io/sitemap.xml
-Sitemap: https://reading-level-up.github.io/feed.xml
-Sitemap: https://reading-level-up.github.io/naver-syndication.xml
+Sitemap: https://readin-hwamyeong.kr/sitemap.xml
+Sitemap: https://readin-hwamyeong.kr/feed.xml
+Sitemap: https://readin-hwamyeong.kr/naver-syndication.xml
 
 #DaumWebMasterTool:30409d62265de740233b056e8f7377e2fede73506f03979b407c7588f8981903:sQsO6kD2X2xb1G1XI2e8Og==

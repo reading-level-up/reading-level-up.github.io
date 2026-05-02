@@ -138,5 +138,4 @@ https://script.google.com/macros/s/AKfycbxzTNnRyWYJredeXX7YAYratopWmboyiqNxMt1LX
 연락처:    010-2811-4221
 운영시간:   월–금 10:00 – 22:00 / 토 10:00 – 14:00 / 일 휴무
 사업자등록번호: 699-94-01680
-설립:      2009 (EST. 2009)
 ```

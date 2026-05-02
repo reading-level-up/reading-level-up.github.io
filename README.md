@@ -54,18 +54,30 @@ Programs 카드 4단 그라데이션: `#F4D8A8 → #E8A06B → #C66A3D → #7A2F
 
 | 항목 | 현재 값 | 위치 (index.html) |
 |---|---|---|
-| 네이버 플레이스 | `https://naver.me/GwfEVFn4` | `const NAVER_URL = ...` |
-| 카카오톡 채널 | `PENDING` | `const KAKAO_URL = ...` |
+| 네이버 플레이스 | `https://naver.me/GwfEVFn4` | `const NAVER_URL` |
+| 카카오톡 채널 Public ID | `_bQzxbX` | `const KAKAO_CHANNEL_ID` |
+| 카카오 폴백 URL (자동) | `https://pf.kakao.com/_bQzxbX` | `const KAKAO_FALLBACK_URL` |
 | 전화 | `010-2811-4221` | `BIZ.phone` |
 
-### 카카오톡 채널 발급 후 교체 가이드
+### 카카오톡 채널 통합 방식
 
-1. [카카오톡 채널 관리자센터](https://center-pf.kakao.com/) 에서 채널 개설
-2. 발급받은 채널 ID (예: `_AbCdEf`) 로 URL 구성: `http://pf.kakao.com/_AbCdEf`
-3. `index.html` 상단의 한 줄만 교체:
+[Kakao Channel Chat SDK](https://developers.kakao.com/docs/ko/kakaotalk-channel/js) (`kakao.channel.min.js`, 경량 SDK) 를 사용합니다. **JavaScript 키 발급/Kakao Developers 앱 등록 불필요** — 채널 Public ID 하나만으로 작동.
+
+흐름:
+- 사용자가 Consult 폼 Step 3 의 "💬 카카오톡으로 상담 시작" 또는 Location 의 "💬 1:1 카카오 문의" 클릭
+- `Kakao.Channel.chat({ channelPublicId: "_bQzxbX" })` 호출 → 1:1 채팅창 즉시 열림 (모바일=카톡 앱, 데스크톱=웹 채팅 또는 PC 카톡)
+- SDK 로드 실패 시 폴백: `https://pf.kakao.com/_bQzxbX` 새 탭
+
+### 카카오 채널 변경 시 교체 가이드
+
+채널 운영 주체가 바뀌거나 새 채널로 교체할 경우:
+
+1. 새 카카오톡 채널 개설 후 채널 홈 URL `https://pf.kakao.com/_xxxxxx` 의 `_xxxxxx` 부분 (Public ID) 복사
+2. `index.html` 상단의 한 줄만 교체:
    ```js
-   const KAKAO_URL = "http://pf.kakao.com/_AbCdEf";
+   const KAKAO_CHANNEL_ID = "_xxxxxx";
    ```
+3. `KAKAO_FALLBACK_URL` 은 자동 갱신 (template literal)
 4. 커밋 후 GitHub Pages 자동 배포 (1–2분 소요)
 
 ### 네이버 예약 페이지 발급 후 교체 가이드
@@ -110,7 +122,7 @@ https://script.google.com/macros/s/AKfycbxzTNnRyWYJredeXX7YAYratopWmboyiqNxMt1LX
 ## TODO
 
 - [ ] **og-image-v2.png** 새 톤에 맞춰 제작 (현재 `assets/og-image.png` 는 기존 광고형 톤 — 카카오톡/네이버에 캐시되어 있을 수 있음, 새 파일명 필수)
-- [ ] **카카오톡 채널 ID** 발급 후 `KAKAO_URL` 교체 (위 가이드 참조)
+- [x] ~~카카오톡 채널 ID 발급~~ → `_bQzxbX` 적용 완료 (Kakao Channel Chat SDK 통합)
 - [ ] **네이버 지도 iframe** 삽입 (현재 Location 섹션 placeholder)
 - [ ] **사진 자산** 교체 — 현재 placeholder:
   - Hero 우측 "책장 디테일" (3:4 비율)

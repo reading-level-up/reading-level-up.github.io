@@ -269,6 +269,11 @@
         }
     </script>
 
+    <!-- Kakao Channel Chat SDK (lightweight, no JS key required) -->
+    <script defer src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.channel.min.js"
+            integrity="sha384-8oNFBbAHWVovcMLgR+mLbxqwoucixezSAzniBcjnEoumhfIbMIg4DrVsoiPEtlnt"
+            crossorigin="anonymous"></script>
+
     <style>
         :root {
             --vb-bg: #F4F1EA;
@@ -434,7 +439,8 @@
 
     /* ─────────────── External channels ─────────────── */
     const NAVER_URL = "https://naver.me/GwfEVFn4";
-    const KAKAO_URL = "PENDING"; /* 채널 ID 발급 후 'http://pf.kakao.com/_xxxxx' 형태로 교체 */
+    const KAKAO_CHANNEL_ID = "_bQzxbX"; /* 카카오톡 채널 Public ID — 채널 변경 시 한 줄 교체 */
+    const KAKAO_FALLBACK_URL = `https://pf.kakao.com/${KAKAO_CHANNEL_ID}`;
     const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxzTNnRyWYJredeXX7YAYratopWmboyiqNxMt1LXv7PStINtSoD3qBBXoW8DIfCtOAu/exec";
 
     const ACCENT = "#1D3A2A";
@@ -900,7 +906,7 @@
         );
     }
 
-    function Consult({ accent, naverUrl, kakaoUrl }) {
+    function Consult({ accent, naverUrl, kakaoChannelId, kakaoFallbackUrl }) {
         const [step, setStep] = useState(1);
         const [data, setData] = useState({ name: "", grade: "", concern: "", phone: "", time: "" });
         const total = 3;
@@ -938,11 +944,16 @@
         };
         const submitToKakao = () => {
             sendToWebhook();
-            if (kakaoUrl && kakaoUrl !== "PENDING") {
-                window.open(kakaoUrl, "_blank", "noopener");
-            } else {
-                alert("카카오톡 채널 준비 중입니다. 잠시 전화로 연락해주세요.\n" + BIZ.phone);
+            if (window.Kakao?.Channel?.chat) {
+                try {
+                    window.Kakao.Channel.chat({ channelPublicId: kakaoChannelId });
+                    return;
+                } catch (e) {
+                    console.warn("Kakao.Channel.chat failed:", e);
+                }
             }
+            // SDK 미로드 시 폴백 — 채널 페이지 새 탭
+            window.open(kakaoFallbackUrl, "_blank", "noopener");
         };
 
         return (
@@ -1070,8 +1081,19 @@
     }
 
     /* ─────────────── LOCATION ─────────────── */
-    function Location({ accent, naverUrl, kakaoUrl }) {
+    function Location({ accent, naverUrl, kakaoChannelId, kakaoFallbackUrl }) {
         const m = useMobile();
+        const openKakaoChat = () => {
+            if (window.Kakao?.Channel?.chat) {
+                try {
+                    window.Kakao.Channel.chat({ channelPublicId: kakaoChannelId });
+                    return;
+                } catch (e) {
+                    console.warn("Kakao.Channel.chat failed:", e);
+                }
+            }
+            window.open(kakaoFallbackUrl, "_blank", "noopener");
+        };
         return (
             <div id="location" style={{ background: "var(--vb-paper)", padding: m ? "72px 20px" : "100px 40px", borderTop: "1px solid var(--vb-line)" }}>
                 <div style={{ maxWidth: 1240, margin: "0 auto", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1.1fr", gap: m ? 28 : 60, alignItems: "center" }}>
@@ -1101,15 +1123,9 @@
                                     <span style={{ background: "#03C75A", color: "white", padding: "2px 6px", borderRadius: 2, fontSize: 10, letterSpacing: "0.05em" }}>N</span>
                                     네이버 지도
                                 </a>
-                                {kakaoUrl && kakaoUrl !== "PENDING" ? (
-                                    <a href={kakaoUrl} target="_blank" rel="noopener noreferrer" style={{ background: "#FEE500", color: "#191919", textDecoration: "none", padding: "14px 20px", fontSize: 13, fontWeight: 700, display: "inline-flex", alignItems: "center", gap: 8 }}>
-                                        💬 카카오 채널
-                                    </a>
-                                ) : (
-                                    <span title="채널 준비 중" style={{ background: "#FEE500", color: "#191919", padding: "14px 20px", fontSize: 13, fontWeight: 700, display: "inline-flex", alignItems: "center", gap: 8, opacity: 0.5, cursor: "not-allowed" }}>
-                                        💬 카카오 채널 (준비중)
-                                    </span>
-                                )}
+                                <button type="button" onClick={openKakaoChat} style={{ background: "#FEE500", color: "#191919", border: "none", padding: "14px 20px", fontSize: 13, fontWeight: 700, display: "inline-flex", alignItems: "center", gap: 8, cursor: "pointer", fontFamily: "inherit" }}>
+                                    💬 1:1 카카오 문의
+                                </button>
                                 <a href={`tel:${BIZ.phoneRaw}`} style={{ background: "transparent", color: "var(--vb-ink)", textDecoration: "none", padding: "14px 20px", fontSize: 13, fontWeight: 600, border: "1px solid var(--vb-ink)" }}>
                                     ☎ 전화
                                 </a>
@@ -1205,8 +1221,8 @@
                 <Programs accent={ACCENT} />
                 <Director accent={ACCENT} />
                 <FAQ accent={ACCENT} />
-                <Consult accent={ACCENT} naverUrl={NAVER_URL} kakaoUrl={KAKAO_URL} />
-                <Location accent={ACCENT} naverUrl={NAVER_URL} kakaoUrl={KAKAO_URL} />
+                <Consult accent={ACCENT} naverUrl={NAVER_URL} kakaoChannelId={KAKAO_CHANNEL_ID} kakaoFallbackUrl={KAKAO_FALLBACK_URL} />
+                <Location accent={ACCENT} naverUrl={NAVER_URL} kakaoChannelId={KAKAO_CHANNEL_ID} kakaoFallbackUrl={KAKAO_FALLBACK_URL} />
                 <Footer />
             </>
         );

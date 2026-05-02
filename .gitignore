@@ -1,0 +1,10 @@
+# Design handoff (raw) — 사용 후 별도 정리 결정 시까지 untracked
+design_handoff_readin_hwamyeong/
+
+# OS / editor 잡파일
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/

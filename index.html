@@ -260,42 +260,15 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com"/>
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
     <link rel="dns-prefetch" href="//unpkg.com"/>
-    <link rel="dns-prefetch" href="//cdn.tailwindcss.com"/>
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 
-    <!-- Preload Critical Assets -->
-    <link rel="preload" href="assets/logo.png" as="image"/>
+    <!-- Preload Critical Assets (Hero 이미지만 critical) -->
     <link rel="preload" href="assets/hero-image.png" as="image"/>
 
     <!-- Fonts: Fraunces (display) + Noto Serif KR (Korean display) + JetBrains Mono (mono). Pretendard via jsdelivr (not on Google Fonts). -->
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,500;1,9..144,600&family=Noto+Serif+KR:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet"/>
-
-    <!-- Tailwind CDN (kept for future flexibility; current page uses minimal Tailwind) -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "vb-bg": "#F4F1EA",
-                        "vb-paper": "#EAE3D2",
-                        "vb-ink": "#0F1A14",
-                        "vb-accent": "#1D3A2A",
-                        "vb-accent-2": "#C64A2A",
-                        "vb-highlight": "#E8D56A",
-                    },
-                    fontFamily: {
-                        "display": ["Fraunces", "Noto Serif KR", "serif"],
-                        "body": ["Pretendard", "Noto Sans KR", "sans-serif"],
-                        "mono": ["JetBrains Mono", "monospace"],
-                    },
-                },
-            },
-        }
-    </script>
 
     <!-- Kakao Channel Chat SDK (lightweight, no JS key required) -->
     <script defer src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.channel.min.js"

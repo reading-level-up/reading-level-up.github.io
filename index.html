@@ -337,6 +337,26 @@
             outline: 2px solid var(--vb-accent-2);
             outline-offset: 2px;
         }
+        /* native radio + visually hidden + label 카드 패턴 (학년/고민 선택)
+           — 키보드 화살표 네비, roving tabindex 모두 native 작동 */
+        .radio-card {
+            position: relative;
+            cursor: pointer;
+            transition: all .2s;
+            display: block;
+        }
+        .radio-card-input {
+            position: absolute;
+            opacity: 0;
+            width: 1px;
+            height: 1px;
+            margin: 0;
+            pointer-events: none;
+        }
+        .radio-card:has(.radio-card-input:focus-visible) {
+            outline: 2px solid var(--vb-accent-2);
+            outline-offset: 2px;
+        }
         /* skip link */
         .skip-link {
             position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;
@@ -956,10 +976,12 @@
         const m = useMobile();
 
         // Programs 카드 클릭 시 학년 사전 선택 (CustomEvent)
+        // 이전 제출 완료 상태(submitted)였더라도 새 시도로 리셋해 버튼이 막히지 않게 함.
         useEffect(() => {
             const handler = (e) => {
-                setData(d => ({ ...d, grade: e.detail }));
+                setData(d => ({ ...d, grade: e.detail, concern: "" }));
                 setStep(1);
+                setSubmitStatus("idle");
             };
             window.addEventListener('preselectGrade', handler);
             return () => window.removeEventListener('preselectGrade', handler);
@@ -1026,7 +1048,7 @@
             // 2) webhook 비동기 fire-and-forget (popup 차단과 무관)
             setSubmitStatus("submitting");
             sendToWebhook();
-            // 3) 시각 피드백 — "전송했어요" (응답 확인 불가, 정직한 표현)
+            // 3) 시각 피드백 — "전송 시도" 상태 표시 (응답 확인 불가, 정직 표현)
             setTimeout(() => setSubmitStatus("submitted"), 250);
         };
         const submitToKakao = () => handleSubmit("kakao");
@@ -1074,10 +1096,23 @@
                                         </FormField>
                                         <fieldset style={{ border: "none", padding: 0, margin: 0, minWidth: 0 }}>
                                             <legend style={{ fontSize: 12, fontWeight: 700, marginBottom: 8, letterSpacing: "0.02em", padding: 0, color: "var(--vb-ink)" }}>아이 학년</legend>
-                                            <div role="radiogroup" aria-label="아이 학년 선택" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 8 }}>
-                                                {["유치부", "초등 저학년", "초등 고학년", "중등부"].map((g) => (
-                                                    <button key={g} type="button" role="radio" aria-checked={data.grade === g} onClick={() => update("grade", g)} style={{ padding: "12px 14px", border: data.grade === g ? `1.5px solid ${accent}` : "1px solid var(--vb-line)", background: data.grade === g ? accent : "transparent", color: data.grade === g ? "white" : "var(--vb-ink)", fontSize: 13, fontWeight: data.grade === g ? 700 : 500, cursor: "pointer", transition: "all .2s" }}>{g}</button>
-                                                ))}
+                                            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 8 }}>
+                                                {["유치부", "초등 저학년", "초등 고학년", "중등부"].map((g) => {
+                                                    const selected = data.grade === g;
+                                                    return (
+                                                        <label key={g} className="radio-card" style={{ padding: "12px 14px", border: selected ? `1.5px solid ${accent}` : "1px solid var(--vb-line)", background: selected ? accent : "transparent", color: selected ? "white" : "var(--vb-ink)", fontSize: 13, fontWeight: selected ? 700 : 500, textAlign: "center" }}>
+                                                            <input
+                                                                className="radio-card-input"
+                                                                type="radio"
+                                                                name="grade"
+                                                                value={g}
+                                                                checked={selected}
+                                                                onChange={() => update("grade", g)}
+                                                            />
+                                                            {g}
+                                                        </label>
+                                                    );
+                                                })}
                                             </div>
                                         </fieldset>
                                     </div>
@@ -1090,12 +1125,23 @@
                                 <div>
                                     <fieldset style={{ border: "none", padding: 0, margin: 0, minWidth: 0 }}>
                                         <legend className="mono" style={{ fontSize: 10, color: accent, letterSpacing: "0.25em", marginBottom: 24, padding: 0 }}>STEP 02 — 가장 큰 고민은</legend>
-                                        <div role="radiogroup" aria-label="고민 선택" style={{ display: "grid", gap: 8 }}>
-                                            {["책을 멀리해요", "성적·문해력이 걱정돼요", "표현력·발표력이 부족해요", "기타 (직접 말씀드릴게요)"].map((g) => (
-                                                <button key={g} type="button" role="radio" aria-checked={data.concern === g} onClick={() => update("concern", g)} style={{ padding: "16px 18px", border: data.concern === g ? `1.5px solid ${accent}` : "1px solid var(--vb-line)", background: data.concern === g ? "var(--vb-paper)" : "transparent", color: "var(--vb-ink)", fontSize: 14, textAlign: "left", cursor: "pointer", transition: "all .2s", fontWeight: data.concern === g ? 600 : 500 }}>
-                                                    {g}
-                                                </button>
-                                            ))}
+                                        <div style={{ display: "grid", gap: 8 }}>
+                                            {["책을 멀리해요", "성적·문해력이 걱정돼요", "표현력·발표력이 부족해요", "기타 (직접 말씀드릴게요)"].map((g) => {
+                                                const selected = data.concern === g;
+                                                return (
+                                                    <label key={g} className="radio-card" style={{ padding: "16px 18px", border: selected ? `1.5px solid ${accent}` : "1px solid var(--vb-line)", background: selected ? "var(--vb-paper)" : "transparent", color: "var(--vb-ink)", fontSize: 14, textAlign: "left", fontWeight: selected ? 600 : 500 }}>
+                                                        <input
+                                                            className="radio-card-input"
+                                                            type="radio"
+                                                            name="concern"
+                                                            value={g}
+                                                            checked={selected}
+                                                            onChange={() => update("concern", g)}
+                                                        />
+                                                        {g}
+                                                    </label>
+                                                );
+                                            })}
                                         </div>
                                     </fieldset>
                                     <div style={{ display: "flex", gap: 8, marginTop: 28 }}>

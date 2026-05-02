@@ -750,11 +750,12 @@
     function Programs({ accent }) {
         const [hover, setHover] = useState(null);
         const m = useMobile();
+        // time / cls 는 정확한 정보 확정 후 채우면 자동 노출됨 (조건부 렌더)
         const programs = [
-            { age: "유치부 (5–7세)", t: "그림책 테라피", c: "#F4D8A8", d: "동화구연 자격을 가진 원장이 그림책을 읽고 함께 이야기를 만듭니다. 정서·표현력·집중력 케어.", time: "주 2회 · 회당 50분", cls: "최대 6명" },
-            { age: "초등 저학년", t: "리딩 빌더", c: "#E8A06B", d: "어휘 진단을 통해 또래 평균까지 끌어올리는 베이스 빌딩. 주 2회, 월 8회 1:1 코칭.", time: "주 2회 · 회당 60분", cls: "최대 8명" },
-            { age: "초등 고학년", t: "사고력 논술", c: "#C66A3D", d: "글의 구조를 분해하고 자기 언어로 다시 쓰는 훈련. 중등 진학 직전 6개월 집중반.", time: "주 2회 · 회당 80분", cls: "최대 8명", dark: true },
-            { age: "중등부", t: "독해 부스터", c: "#7A2F1F", d: "교과서·시험 지문 분석. 국어/사회 1등급 도달을 목표로 한 역추적 코칭.", time: "주 2회 · 회당 90분", cls: "최대 6명", dark: true },
+            { age: "유치부 (5–7세)", t: "그림책 테라피", c: "#F4D8A8", d: "동화구연 자격을 가진 원장이 그림책을 읽고 함께 이야기를 만듭니다. 정서·표현력·집중력 케어.", time: "", cls: "" },
+            { age: "초등 저학년", t: "리딩 빌더", c: "#E8A06B", d: "어휘 진단을 통해 또래 평균까지 끌어올리는 베이스 빌딩. 1:1 코칭.", time: "", cls: "" },
+            { age: "초등 고학년", t: "사고력 논술", c: "#C66A3D", d: "글의 구조를 분해하고 자기 언어로 다시 쓰는 훈련. 중등 진학 직전 집중반.", time: "", cls: "", dark: true },
+            { age: "중등부", t: "독해 부스터", c: "#7A2F1F", d: "교과서·시험 지문 분석. 국어/사회 1등급 도달을 목표로 한 역추적 코칭.", time: "", cls: "", dark: true },
         ];
         return (
             <div id="programs" style={{ background: "var(--vb-bg)", padding: m ? "72px 20px" : "100px 40px" }}>
@@ -802,11 +803,13 @@
                                     <div style={{ fontSize: 13, lineHeight: 1.7, opacity: 0.85 }}>{p.d}</div>
                                 </div>
                                 <div style={{ marginTop: 30, paddingTop: 16, borderTop: `1px dashed ${p.dark ? "rgba(255,255,255,0.25)" : "rgba(0,0,0,0.15)"}` }}>
-                                    <div className="mono" style={{ fontSize: 10, letterSpacing: "0.1em", opacity: 0.7, lineHeight: 1.9 }}>
-                                        ⏱ {p.time}<br />
-                                        ◇ {p.cls}
-                                    </div>
-                                    <div className="mono" style={{ fontSize: 11, marginTop: 14, opacity: !m && hover === i ? 1 : 0.5, transition: "opacity .2s", letterSpacing: "0.1em", display: "flex", alignItems: "center", gap: 6 }}>
+                                    {(p.time || p.cls) && (
+                                        <div className="mono" style={{ fontSize: 10, letterSpacing: "0.1em", opacity: 0.7, lineHeight: 1.9, marginBottom: 14 }}>
+                                            {p.time && <>⏱ {p.time}<br /></>}
+                                            {p.cls && <>◇ {p.cls}</>}
+                                        </div>
+                                    )}
+                                    <div className="mono" style={{ fontSize: 11, opacity: !m && hover === i ? 1 : 0.5, transition: "opacity .2s", letterSpacing: "0.1em", display: "flex", alignItems: "center", gap: 6 }}>
                                         자세히 보기 <span style={{ display: "inline-block", transform: !m && hover === i ? "translateX(4px)" : "none", transition: "transform .2s" }}>→</span>
                                     </div>
                                 </div>

@@ -17,7 +17,7 @@
     <title>리드인 화명 용수초점 — 화명동 독서논술 교실 | 유치부·초등·중등 1:1 코칭</title>
     <meta name="title" content="리드인 화명 용수초점 — 화명동 독서논술 교실 | 유치부·초등·중등 1:1 코칭"/>
     <meta name="description" content="용수초에서 건널목 하나. 한 권의 책을 끝까지 읽어내는 힘을 기르는 화명동 독서논술 교실. 유치부 그림책 테라피부터 중등 독해 부스터까지, 1:1 진단 후 수업. 동화구연 1급·그림책 테라피 지도자 원장 직강."/>
-    <meta name="keywords" content="리드인 용수초점, 화명 현대 공부방, 화명동 리드인, 용수초 공부방, 용수초 독서논술, 화명동 문해력, 화명동 그림책테라피, 부산 독서치료, 화명동 논술학원, 용수중 공부방, 화명중 논술, 화정초 공부방, 명진초 독서, 화명동 동화구연, 학사초 논술, 화명동 초등논술, 화명동 중등논술, 리드인 레벨테스트, 자기주도학습, 초등 국어 학원, 화명 현대아파트 공부방, 수정역 공부방, 화명역 논술, 화명 리드인, 리드인 화명, 금명초 공부방, 명덕초 공부방, 와석초 공부방, 화잠초 공부방, 화신중 공부방, 금명중 공부방, 명진중 공부방, 북구 독서, 북구 논술, 부산 리드인, 심리상담, 아동심리, 독서코칭, 1:1독서"/>
+    <meta name="keywords" content="리드인 화명 용수초점, 리드인 화명, 화명 리드인, 화명동 독서논술, 화명 독서논술, 화명동 그림책테라피, 화명동 동화구연, 용수초 공부방, 용수초 독서논술, 화명 현대 공부방, 화명동 문해력, 화명동 논술학원, 화명동 초등논술, 화명동 중등논술, 부산 북구 독서, 1:1 독서코칭, 1:1독서, 독서코칭"/>
     <meta name="author" content="리드인 화명 용수초점"/>
     <meta name="robots" content="index, follow"/>
     <meta name="googlebot" content="index, follow"/>
@@ -55,8 +55,10 @@
     <meta property="og:title" content="리드인 화명 용수초점 | 화명동 독서논술 교실"/>
     <meta property="og:description" content="용수초에서 건널목 하나. 한 권의 책을 끝까지 읽어내는 힘을 기르는 동네 독서논술 교실."/>
     <meta property="og:image" content="https://readin-hwamyeong.kr/assets/og-image-hero.png"/>
+    <meta property="og:image:type" content="image/png"/>
     <meta property="og:image:width" content="1200"/>
     <meta property="og:image:height" content="630"/>
+    <meta property="og:image:alt" content="리드인 화명 용수초점 — 화명동 독서논술 교실"/>
     <meta property="og:locale" content="ko_KR"/>
     <meta property="og:site_name" content="리드인 화명 용수초점"/>
 
@@ -114,6 +116,31 @@
                 },
                 "areaServed": ["화명동", "금곡동"],
                 "slogan": "한 권의 책을 끝까지 읽어내는 힘",
+                "openingHoursSpecification": [
+                    {
+                        "@type": "OpeningHoursSpecification",
+                        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+                        "opens": "10:00",
+                        "closes": "22:00"
+                    },
+                    {
+                        "@type": "OpeningHoursSpecification",
+                        "dayOfWeek": "Saturday",
+                        "opens": "10:00",
+                        "closes": "14:00"
+                    }
+                ],
+                "sameAs": [
+                    "https://map.naver.com/p/entry/place/2037075786",
+                    "https://pf.kakao.com/_bQzxbX"
+                ],
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+82-10-2811-4221",
+                    "contactType": "customer service",
+                    "areaServed": "KR",
+                    "availableLanguage": "Korean"
+                },
                 "hasOfferCatalog": {
                     "@type": "OfferCatalog",
                     "name": "독서논술 프로그램 — 유치부부터 중등까지 4단계 책장",
@@ -233,42 +260,15 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com"/>
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net"/>
     <link rel="dns-prefetch" href="//unpkg.com"/>
-    <link rel="dns-prefetch" href="//cdn.tailwindcss.com"/>
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 
-    <!-- Preload Critical Assets -->
-    <link rel="preload" href="assets/logo.png" as="image"/>
+    <!-- Preload Critical Assets (Hero 이미지만 critical) -->
     <link rel="preload" href="assets/hero-image.png" as="image"/>
 
     <!-- Fonts: Fraunces (display) + Noto Serif KR (Korean display) + JetBrains Mono (mono). Pretendard via jsdelivr (not on Google Fonts). -->
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,500;1,9..144,600&family=Noto+Serif+KR:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet"/>
-
-    <!-- Tailwind CDN (kept for future flexibility; current page uses minimal Tailwind) -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "vb-bg": "#F4F1EA",
-                        "vb-paper": "#EAE3D2",
-                        "vb-ink": "#0F1A14",
-                        "vb-accent": "#1D3A2A",
-                        "vb-accent-2": "#C64A2A",
-                        "vb-highlight": "#E8D56A",
-                    },
-                    fontFamily: {
-                        "display": ["Fraunces", "Noto Serif KR", "serif"],
-                        "body": ["Pretendard", "Noto Sans KR", "sans-serif"],
-                        "mono": ["JetBrains Mono", "monospace"],
-                    },
-                },
-            },
-        }
-    </script>
 
     <!-- Kakao Channel Chat SDK (lightweight, no JS key required) -->
     <script defer src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.channel.min.js"
@@ -327,6 +327,44 @@
         ::selection {
             background: var(--vb-accent);
             color: var(--vb-highlight);
+        }
+        :focus-visible {
+            outline: 2px solid var(--vb-accent-2);
+            outline-offset: 3px;
+            border-radius: 1px;
+        }
+        button:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 2px solid var(--vb-accent-2);
+            outline-offset: 2px;
+        }
+        /* native radio + visually hidden + label 카드 패턴 (학년/고민 선택)
+           — 키보드 화살표 네비, roving tabindex 모두 native 작동 */
+        .radio-card {
+            position: relative;
+            cursor: pointer;
+            transition: all .2s;
+            display: block;
+        }
+        .radio-card-input {
+            position: absolute;
+            opacity: 0;
+            width: 1px;
+            height: 1px;
+            margin: 0;
+            pointer-events: none;
+        }
+        .radio-card:has(.radio-card-input:focus-visible) {
+            outline: 2px solid var(--vb-accent-2);
+            outline-offset: 2px;
+        }
+        /* skip link */
+        .skip-link {
+            position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;
+        }
+        .skip-link:focus {
+            position: fixed; left: 16px; top: 16px; width: auto; height: auto;
+            padding: 12px 20px; background: var(--vb-accent); color: var(--vb-bg);
+            z-index: 100; font-weight: 600;
         }
         @keyframes bplus-rise {
             from { transform: translateY(110%); }
@@ -395,7 +433,7 @@
     </div>
 
     <!-- Mobile sticky bottom bar (외부 React tree) -->
-    <div class="bottom-bar" role="navigation" aria-label="모바일 빠른 메뉴">
+    <nav class="bottom-bar" aria-label="모바일 빠른 메뉴">
         <a href="tel:01028114221" class="bottom-bar-call" aria-label="전화 상담 010-2811-4221">
             <span aria-hidden="true">☎</span>
             <span>전화 상담</span>
@@ -404,7 +442,7 @@
             <span>상담 신청</span>
             <span aria-hidden="true">→</span>
         </a>
-    </div>
+    </nav>
 
     <!-- React 18.3.1 production min + Babel standalone -->
     <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
@@ -519,7 +557,7 @@
             ["오시는 길", "location"],
         ];
         return (
-            <div style={{ position: "sticky", top: 0, zIndex: 50, background: scrolled ? "rgba(244,241,234,0.92)" : "transparent", backdropFilter: scrolled ? "blur(12px)" : "none", WebkitBackdropFilter: scrolled ? "blur(12px)" : "none", borderBottom: scrolled ? "1px solid var(--vb-line)" : "1px solid transparent", transition: "all .3s ease" }}>
+            <header role="banner" style={{ position: "sticky", top: 0, zIndex: 50, background: scrolled ? "rgba(244,241,234,0.92)" : "transparent", backdropFilter: scrolled ? "blur(12px)" : "none", WebkitBackdropFilter: scrolled ? "blur(12px)" : "none", borderBottom: scrolled ? "1px solid var(--vb-line)" : "1px solid transparent", transition: "all .3s ease" }}>
                 <div className="mono" style={{ background: "var(--vb-ink)", color: "var(--vb-bg)", textAlign: "center", padding: "8px 12px", fontSize: m ? 9 : 11, letterSpacing: m ? "0.18em" : "0.3em" }}>
                     리드인 화명 용수초점 · 독서논술 전문 교실
                 </div>
@@ -541,7 +579,7 @@
                         </div>
                     )}
                     {m && (
-                        <button onClick={() => setMenu(!menu)} aria-label="메뉴 열기" aria-expanded={menu} style={{ background: "transparent", border: "none", padding: 8, cursor: "pointer", display: "flex", flexDirection: "column", gap: 4 }}>
+                        <button onClick={() => setMenu(!menu)} aria-label={menu ? "메뉴 닫기" : "메뉴 열기"} aria-expanded={menu} aria-controls="mobile-menu" style={{ background: "transparent", border: "none", padding: 8, cursor: "pointer", display: "flex", flexDirection: "column", gap: 4 }}>
                             <span style={{ width: 22, height: 1.5, background: "var(--vb-ink)", transition: "transform .2s", transform: menu ? "rotate(45deg) translate(4px, 4px)" : "none" }} />
                             <span style={{ width: 22, height: 1.5, background: "var(--vb-ink)", opacity: menu ? 0 : 1, transition: "opacity .2s" }} />
                             <span style={{ width: 22, height: 1.5, background: "var(--vb-ink)", transition: "transform .2s", transform: menu ? "rotate(-45deg) translate(4px, -4px)" : "none" }} />
@@ -549,7 +587,7 @@
                     )}
                 </div>
                 {m && menu && (
-                    <div style={{ background: "var(--vb-bg)", borderTop: "1px solid var(--vb-line)", padding: "20px" }}>
+                    <div id="mobile-menu" style={{ background: "var(--vb-bg)", borderTop: "1px solid var(--vb-line)", padding: "20px" }}>
                         <div style={{ display: "grid", gap: 4 }}>
                             {links.map(([k, id]) => (
                                 <a key={id} href={`#${id}`} onClick={() => setMenu(false)} style={{ color: "var(--vb-ink)", textDecoration: "none", padding: "14px 8px", fontSize: 16, fontWeight: 500, borderBottom: "1px solid var(--vb-line)" }}>{k}</a>
@@ -560,7 +598,7 @@
                         </div>
                     </div>
                 )}
-            </div>
+            </header>
         );
     }
 
@@ -599,6 +637,13 @@
                     </h1>
 
                     <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1fr 1fr", gap: m ? 24 : 40, marginTop: m ? 36 : 60, alignItems: "start" }}>
+                        {m && (
+                            <Reveal delay={200}>
+                                <div style={{ aspectRatio: "16/9", overflow: "hidden", border: "1px solid var(--vb-line)", background: "var(--vb-paper)" }}>
+                                    <img src="assets/hero-image.png" alt="화명동 독서논술 교실 — 책을 읽는 아이" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} loading="eager" />
+                                </div>
+                            </Reveal>
+                        )}
                         {!m && (
                             <Reveal delay={400}>
                                 <div style={{ aspectRatio: "3/4", overflow: "hidden", border: "1px solid var(--vb-line)", background: "var(--vb-paper)" }}>
@@ -753,11 +798,17 @@
         const m = useMobile();
         // time / cls 는 정확한 정보 확정 후 채우면 자동 노출됨 (조건부 렌더)
         const programs = [
-            { age: "유치부 (5–7세)", t: "그림책 테라피", c: "#F4D8A8", d: "동화구연 자격을 가진 원장과 그림책을 함께 읽고 이야기로 펼쳐가는 시간. 책이 좋아지는 첫 만남, 자기 마음을 말로 옮기는 힘을 기릅니다.", time: "", cls: "" },
-            { age: "초등 저학년", t: "리딩 빌더", c: "#E8A06B", d: "처음 만나는 어휘를 자기 것으로 만들고, 한 권의 책을 끝까지 읽는 호흡을 다지는 단계. 혼자 읽는 즐거움이 시작됩니다.", time: "", cls: "" },
-            { age: "초등 고학년", t: "사고력 논술", c: "#C66A3D", d: "글의 구조를 분해하고, 자기 언어로 다시 쓰는 훈련. 읽은 것을 자기 입으로 설명할 수 있는 단계로 옮겨갑니다.", time: "", cls: "", dark: true },
-            { age: "중등부", t: "독해 부스터", c: "#7A2F1F", d: "교과서와 시험 지문 한 단락을 정확히 이해하는 힘. 모든 과목의 토대가 되는 문해력을 단단히 다집니다.", time: "", cls: "", dark: true },
+            { age: "유치부 (5–7세)", grade: "유치부", t: "그림책 테라피", c: "#F4D8A8", d: "동화구연 자격을 가진 원장과 그림책을 함께 읽고 이야기로 펼쳐가는 시간. 책이 좋아지는 첫 만남, 자기 마음을 말로 옮기는 힘을 기릅니다.", time: "", cls: "" },
+            { age: "초등 저학년", grade: "초등 저학년", t: "리딩 빌더", c: "#E8A06B", d: "처음 만나는 어휘를 자기 것으로 만들고, 한 권의 책을 끝까지 읽는 호흡을 다지는 단계. 혼자 읽는 즐거움이 시작됩니다.", time: "", cls: "" },
+            { age: "초등 고학년", grade: "초등 고학년", t: "사고력 논술", c: "#C66A3D", d: "글의 구조를 분해하고, 자기 언어로 다시 쓰는 훈련. 읽은 것을 자기 입으로 설명할 수 있는 단계로 옮겨갑니다.", time: "", cls: "", dark: true },
+            { age: "중등부", grade: "중등부", t: "독해 부스터", c: "#7A2F1F", d: "교과서와 시험 지문 한 단락을 정확히 이해하는 힘. 모든 과목의 토대가 되는 문해력을 단단히 다집니다.", time: "", cls: "", dark: true },
         ];
+
+        const goToConsultWithGrade = (grade) => {
+            window.dispatchEvent(new CustomEvent('preselectGrade', { detail: grade }));
+            const el = document.getElementById('consult');
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
         return (
             <div id="programs" style={{ background: "var(--vb-bg)", padding: m ? "72px 20px" : "100px 40px" }}>
                 <div style={{ maxWidth: 1240, margin: "0 auto" }}>
@@ -781,9 +832,12 @@
 
                     <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "repeat(4, 1fr)", gap: 0, borderTop: "2px solid var(--vb-ink)" }}>
                         {programs.map((p, i) => (
-                            <div key={i}
+                            <a key={i}
+                                href="#consult"
+                                aria-label={`${p.t} 프로그램으로 상담 신청 — ${p.age}`}
                                 onMouseEnter={() => setHover(i)}
                                 onMouseLeave={() => setHover(null)}
+                                onClick={(e) => { e.preventDefault(); goToConsultWithGrade(p.grade); }}
                                 style={{
                                     background: p.c,
                                     color: p.dark ? "var(--vb-bg)" : "var(--vb-ink)",
@@ -795,6 +849,7 @@
                                     transition: "transform .35s cubic-bezier(.2,.7,.2,1), background .3s",
                                     transform: !m && hover === i ? "translateY(-8px)" : "translateY(0)",
                                     cursor: "pointer", position: "relative",
+                                    textDecoration: "none",
                                 }}>
                                 <div>
                                     <div className="mono" style={{ fontSize: 10, letterSpacing: "0.25em", opacity: 0.6, marginBottom: 20 }}>
@@ -810,11 +865,11 @@
                                             {p.cls && <>◇ {p.cls}</>}
                                         </div>
                                     )}
-                                    <div className="mono" style={{ fontSize: 11, opacity: !m && hover === i ? 1 : 0.5, transition: "opacity .2s", letterSpacing: "0.1em", display: "flex", alignItems: "center", gap: 6 }}>
-                                        자세히 보기 <span style={{ display: "inline-block", transform: !m && hover === i ? "translateX(4px)" : "none", transition: "transform .2s" }}>→</span>
+                                    <div className="mono" style={{ fontSize: 11, opacity: !m && hover === i ? 1 : 0.55, transition: "opacity .2s", letterSpacing: "0.1em", display: "flex", alignItems: "center", gap: 6, fontWeight: 600 }}>
+                                        상담 신청 <span style={{ display: "inline-block", transform: !m && hover === i ? "translateX(4px)" : "none", transition: "transform .2s" }}>→</span>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         ))}
                     </div>
                 </div>
@@ -866,9 +921,11 @@
     function FAQ({ accent }) {
         const m = useMobile();
         const items = [
-            { q: "Q.", t: "책을 강제로 읽히면 정말 효과가 있을까요?", a: "강요된 독서는 거부감을 학습시킵니다. 우리는 아이가 스스로 다음 페이지를 넘기게 되는 순간을 설계합니다." },
-            { q: "Q.", t: "중학생 성적이 갑자기 무너졌습니다. 왜죠?", a: "지문 한 단락을 정확히 이해하지 못하면, 어떤 과목도 풀어낼 수 없습니다. 문해력은 모든 과목의 기반입니다." },
-            { q: "Q.", t: "대형 학원에 보내고 있는데, 충분하지 않을까요?", a: "대형 학원은 진도, 우리는 진단입니다. 두 가지는 서로 다른 도구입니다." },
+            { q: "Q.", t: "책을 강제로 읽히면 정말 효과가 있을까요?", a: "강요된 독서는 거부감을 학습시킵니다. 우리는 아이가 스스로 다음 페이지를 넘기게 되는 순간을 설계합니다. 그림책 테라피·1:1 진단을 통해 아이의 흥미를 먼저 찾고, 그 위에 어휘와 사고력을 쌓습니다." },
+            { q: "Q.", t: "중학생 성적이 갑자기 무너졌습니다. 왜죠?", a: "지문 한 단락을 정확히 이해하지 못하면, 어떤 과목도 풀어낼 수 없습니다. 문해력은 모든 과목의 기반입니다. 독해 부스터 프로그램은 교과서·시험 지문을 정확히 이해하는 훈련을 제공합니다." },
+            { q: "Q.", t: "대형 학원에 보내고 있는데, 충분하지 않을까요?", a: "대형 학원은 진도, 우리는 진단입니다. 두 가지는 서로 다른 도구입니다. 보조 강사 없이 원장이 끝까지 함께하므로 한 아이의 약점을 정확히 짚어드립니다." },
+            { q: "Q.", t: "위치가 어디인가요?", a: "부산 북구 화명신도시로 48 (현대2차아파트 단지 내)에 위치합니다. 용수초등학교에서 건널목 하나, 단지 내 통로로 도보 1–2분 거리예요. 용수중·화명중 인근, 수정역·화명역 도보권." },
+            { q: "Q.", t: "무료 레벨 테스트는 어떻게 신청하나요?", a: "이 페이지 하단 상담 신청 폼에 보호자 성함·아이 학년·고민·연락처를 남겨주시면 카카오톡 또는 네이버 플레이스로 이어드립니다. 1:1 진단을 통해 아이의 현재 수준을 파악하고 개인별 커리큘럼을 제안합니다." },
         ];
         return (
             <div id="faq" style={{ background: "var(--vb-paper)", padding: m ? "72px 20px" : "100px 40px" }}>
@@ -889,7 +946,7 @@
                             <Reveal key={i} delay={i * 100}>
                                 <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "100px 1fr 1.5fr", gap: m ? 12 : 30, padding: m ? "24px 0" : "32px 0", borderTop: "1px solid var(--vb-line)", borderBottom: i === items.length - 1 ? "1px solid var(--vb-line)" : "none", alignItems: "start" }}>
                                     <div className="display" style={{ fontSize: m ? 36 : 56, color: accent, lineHeight: 1, fontStyle: "italic" }}>{it.q}</div>
-                                    <div style={{ fontSize: m ? 17 : 20, fontWeight: 600, color: "var(--vb-ink)", lineHeight: 1.4 }}>{it.t}</div>
+                                    <h3 style={{ fontSize: m ? 17 : 20, fontWeight: 600, color: "var(--vb-ink)", lineHeight: 1.4, margin: 0 }}>{it.t}</h3>
                                     <div style={{ fontSize: m ? 14 : 15, lineHeight: 1.8, color: "var(--vb-ink-2)" }}>{it.a}</div>
                                 </div>
                             </Reveal>
@@ -913,10 +970,50 @@
     function Consult({ accent, naverUrl, kakaoChannelId, kakaoFallbackUrl }) {
         const [step, setStep] = useState(1);
         const [data, setData] = useState({ name: "", grade: "", concern: "", phone: "", time: "" });
+        const [agreed, setAgreed] = useState(false);
+        const [submitStatus, setSubmitStatus] = useState("idle"); // idle | submitting | submitted
+        const submitTimerRef = useRef(null);
         const total = 3;
         const m = useMobile();
 
+        // submitted 전환 타이머 정리 — 카드 재진입/reset 시 race 차단
+        const clearSubmitTimer = () => {
+            if (submitTimerRef.current) {
+                clearTimeout(submitTimerRef.current);
+                submitTimerRef.current = null;
+            }
+        };
+
+        // Programs 카드 클릭 시 학년 사전 선택 (CustomEvent)
+        // 이전 제출 완료 상태(submitted)였더라도 새 시도로 리셋해 버튼이 막히지 않게 함.
+        // 또한 진행 중인 250ms 타이머가 있으면 정리해 race 방지.
+        useEffect(() => {
+            const handler = (e) => {
+                clearSubmitTimer();
+                setData(d => ({ ...d, grade: e.detail, concern: "" }));
+                setStep(1);
+                setSubmitStatus("idle");
+            };
+            window.addEventListener('preselectGrade', handler);
+            return () => {
+                window.removeEventListener('preselectGrade', handler);
+                clearSubmitTimer(); // unmount cleanup
+            };
+        }, []);
+
         const update = (k, v) => setData((d) => ({ ...d, [k]: v }));
+
+        // 전화 자동 포매팅 (010-XXXX-XXXX)
+        const formatPhone = (raw) => {
+            const v = raw.replace(/\D/g, '').slice(0, 11);
+            if (v.length <= 3) return v;
+            if (v.length <= 7) return v.slice(0, 3) + '-' + v.slice(3);
+            return v.slice(0, 3) + '-' + v.slice(3, 7) + '-' + v.slice(7);
+        };
+        // 010 휴대폰 4-4 자리 strict (안내 문구와 일치)
+        const phoneValid = /^010-\d{4}-\d{4}$/.test(data.phone);
+        // 한 번 제출 후 중복 접수 방지 — idle 일 때만 활성
+        const canSubmit = phoneValid && agreed && submitStatus === "idle";
 
         const sendToWebhook = () => {
             const payload = {
@@ -929,7 +1026,6 @@
                 message: data.concern,
                 timestamp: new Date().toISOString(),
             };
-            // fire-and-forget — 외부 채널 이동 우선, 실패해도 진행
             try {
                 fetch(WEBHOOK_URL, {
                     method: "POST",
@@ -942,23 +1038,37 @@
             }
         };
 
-        const submitToNaver = () => {
-            sendToWebhook();
-            window.open(naverUrl, "_blank", "noopener");
-        };
-        const submitToKakao = () => {
-            sendToWebhook();
-            if (window.Kakao?.Channel?.chat) {
-                try {
-                    window.Kakao.Channel.chat({ channelPublicId: kakaoChannelId });
-                    return;
-                } catch (e) {
-                    console.warn("Kakao.Channel.chat failed:", e);
+        // CRITICAL: window.open 은 사용자 제스처(click) 안에서 동기 호출해야 popup 차단 회피.
+        // setTimeout 안에서 호출하면 비동기로 인식되어 브라우저가 차단 가능.
+        const handleSubmit = (channel) => {
+            if (!canSubmit) return;
+
+            // 1) 외부 이동 즉시 (사용자 제스처 동기 호출) — popup 차단 회피
+            if (channel === "kakao") {
+                if (window.Kakao?.Channel?.chat) {
+                    try {
+                        window.Kakao.Channel.chat({ channelPublicId: kakaoChannelId });
+                    } catch (e) {
+                        console.warn("Kakao.Channel.chat failed:", e);
+                        window.open(kakaoFallbackUrl, "_blank", "noopener");
+                    }
+                } else {
+                    window.open(kakaoFallbackUrl, "_blank", "noopener");
                 }
+            } else {
+                window.open(naverUrl, "_blank", "noopener");
             }
-            // SDK 미로드 시 폴백 — 채널 페이지 새 탭
-            window.open(kakaoFallbackUrl, "_blank", "noopener");
+
+            // 2) webhook 비동기 fire-and-forget (popup 차단과 무관)
+            setSubmitStatus("submitting");
+            sendToWebhook();
+            // 3) 시각 피드백 — "전송 시도" 상태 표시 (응답 확인 불가, 정직 표현)
+            //    timer ref 로 추적 → 카드 재진입/reset 시 cleanup
+            clearSubmitTimer();
+            submitTimerRef.current = setTimeout(() => setSubmitStatus("submitted"), 250);
         };
+        const submitToKakao = () => handleSubmit("kakao");
+        const submitToNaver = () => handleSubmit("naver");
 
         return (
             <div id="consult" style={{ background: "var(--vb-ink)", color: "var(--vb-bg)", padding: m ? "80px 20px" : "120px 40px", position: "relative", overflow: "hidden" }}>
@@ -1000,13 +1110,27 @@
                                         <FormField label="보호자 성함">
                                             <input className="vb-input" placeholder="예) 김○○" value={data.name} onChange={(e) => update("name", e.target.value)} />
                                         </FormField>
-                                        <FormField label="아이 학년">
+                                        <fieldset style={{ border: "none", padding: 0, margin: 0, minWidth: 0 }}>
+                                            <legend style={{ fontSize: 12, fontWeight: 700, marginBottom: 8, letterSpacing: "0.02em", padding: 0, color: "var(--vb-ink)" }}>아이 학년</legend>
                                             <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 8 }}>
-                                                {["유치부", "초등 저학년", "초등 고학년", "중등부"].map((g) => (
-                                                    <button key={g} type="button" onClick={() => update("grade", g)} style={{ padding: "12px 14px", border: data.grade === g ? `1.5px solid ${accent}` : "1px solid var(--vb-line)", background: data.grade === g ? accent : "transparent", color: data.grade === g ? "white" : "var(--vb-ink)", fontSize: 13, fontWeight: data.grade === g ? 700 : 500, cursor: "pointer", transition: "all .2s" }}>{g}</button>
-                                                ))}
+                                                {["유치부", "초등 저학년", "초등 고학년", "중등부"].map((g) => {
+                                                    const selected = data.grade === g;
+                                                    return (
+                                                        <label key={g} className="radio-card" style={{ padding: "12px 14px", border: selected ? `1.5px solid ${accent}` : "1px solid var(--vb-line)", background: selected ? accent : "transparent", color: selected ? "white" : "var(--vb-ink)", fontSize: 13, fontWeight: selected ? 700 : 500, textAlign: "center" }}>
+                                                            <input
+                                                                className="radio-card-input"
+                                                                type="radio"
+                                                                name="grade"
+                                                                value={g}
+                                                                checked={selected}
+                                                                onChange={() => update("grade", g)}
+                                                            />
+                                                            {g}
+                                                        </label>
+                                                    );
+                                                })}
                                             </div>
-                                        </FormField>
+                                        </fieldset>
                                     </div>
                                     <button type="button" onClick={() => setStep(2)} disabled={!data.name || !data.grade} style={{ marginTop: 32, width: "100%", background: accent, color: "white", border: "none", padding: 18, fontSize: 14, fontWeight: 700, letterSpacing: "0.05em", cursor: !data.name || !data.grade ? "not-allowed" : "pointer", opacity: !data.name || !data.grade ? 0.4 : 1, transition: "opacity .2s" }}>
                                         다음 단계 →
@@ -1015,14 +1139,27 @@
                             )}
                             {step === 2 && (
                                 <div>
-                                    <div className="mono" style={{ fontSize: 10, color: accent, letterSpacing: "0.25em", marginBottom: 24 }}>STEP 02 — 가장 큰 고민은</div>
-                                    <div style={{ display: "grid", gap: 8 }}>
-                                        {["책을 멀리해요", "성적·문해력이 걱정돼요", "표현력·발표력이 부족해요", "기타 (직접 말씀드릴게요)"].map((g) => (
-                                            <button key={g} type="button" onClick={() => update("concern", g)} style={{ padding: "16px 18px", border: data.concern === g ? `1.5px solid ${accent}` : "1px solid var(--vb-line)", background: data.concern === g ? "var(--vb-paper)" : "transparent", color: "var(--vb-ink)", fontSize: 14, textAlign: "left", cursor: "pointer", transition: "all .2s", fontWeight: data.concern === g ? 600 : 500 }}>
-                                                {g}
-                                            </button>
-                                        ))}
-                                    </div>
+                                    <fieldset style={{ border: "none", padding: 0, margin: 0, minWidth: 0 }}>
+                                        <legend className="mono" style={{ fontSize: 10, color: accent, letterSpacing: "0.25em", marginBottom: 24, padding: 0 }}>STEP 02 — 가장 큰 고민은</legend>
+                                        <div style={{ display: "grid", gap: 8 }}>
+                                            {["책을 멀리해요", "성적·문해력이 걱정돼요", "표현력·발표력이 부족해요", "기타 (직접 말씀드릴게요)"].map((g) => {
+                                                const selected = data.concern === g;
+                                                return (
+                                                    <label key={g} className="radio-card" style={{ padding: "16px 18px", border: selected ? `1.5px solid ${accent}` : "1px solid var(--vb-line)", background: selected ? "var(--vb-paper)" : "transparent", color: "var(--vb-ink)", fontSize: 14, textAlign: "left", fontWeight: selected ? 600 : 500 }}>
+                                                        <input
+                                                            className="radio-card-input"
+                                                            type="radio"
+                                                            name="concern"
+                                                            value={g}
+                                                            checked={selected}
+                                                            onChange={() => update("concern", g)}
+                                                        />
+                                                        {g}
+                                                    </label>
+                                                );
+                                            })}
+                                        </div>
+                                    </fieldset>
                                     <div style={{ display: "flex", gap: 8, marginTop: 28 }}>
                                         <button type="button" onClick={() => setStep(1)} style={{ background: "transparent", color: "var(--vb-ink)", border: "1px solid var(--vb-line)", padding: 18, fontSize: 14, fontWeight: 500, cursor: "pointer" }}>
                                             ← 이전
@@ -1038,7 +1175,21 @@
                                     <div className="mono" style={{ fontSize: 10, color: accent, letterSpacing: "0.25em", marginBottom: 24 }}>STEP 03 — 연락 방법</div>
                                     <div style={{ display: "grid", gap: 20 }}>
                                         <FormField label="연락처">
-                                            <input className="vb-input" type="tel" inputMode="tel" placeholder="010-0000-0000" value={data.phone} onChange={(e) => update("phone", e.target.value)} />
+                                            <input
+                                                className="vb-input"
+                                                type="tel"
+                                                inputMode="tel"
+                                                placeholder="010-0000-0000"
+                                                value={data.phone}
+                                                onChange={(e) => update("phone", formatPhone(e.target.value))}
+                                                aria-invalid={data.phone && !phoneValid ? "true" : "false"}
+                                                aria-describedby={data.phone && !phoneValid ? "phone-error" : undefined}
+                                            />
+                                            {data.phone && !phoneValid && (
+                                                <div id="phone-error" role="alert" style={{ fontSize: 11, color: "var(--vb-accent-2)", marginTop: 6, fontWeight: 600 }}>
+                                                    010-XXXX-XXXX 형식으로 입력해주세요
+                                                </div>
+                                            )}
                                         </FormField>
                                         <FormField label="희망 연락 시간 (선택)">
                                             <input className="vb-input" placeholder="예) 평일 오후 3–5시" value={data.time} onChange={(e) => update("time", e.target.value)} />
@@ -1047,14 +1198,58 @@
                                     <div style={{ marginTop: 20, padding: "14px 16px", background: "var(--vb-paper)", fontSize: 12, color: "var(--vb-ink-2)", lineHeight: 1.7, borderLeft: `3px solid ${accent}` }}>
                                         편하신 채널로 이어가세요. 카카오톡 채널은 24시간 메시지 가능,
                                         네이버 플레이스에서는 후기와 위치 확인이 가능합니다.
+                                        <br /><br />
+                                        <strong>접수 후 평일 영업시간 (월–금 10:00–22:00) 안에 답장드립니다.</strong>
                                     </div>
+
+                                    {/* 개인정보 수집·이용 동의 */}
+                                    <label style={{ display: "flex", gap: 10, alignItems: "flex-start", marginTop: 16, padding: "14px 16px", background: "var(--vb-bg)", border: agreed ? `1.5px solid ${accent}` : "1px solid var(--vb-line)", fontSize: 12, color: "var(--vb-ink-2)", cursor: "pointer", lineHeight: 1.65, transition: "border-color .15s" }}>
+                                        <input
+                                            type="checkbox"
+                                            checked={agreed}
+                                            onChange={(e) => setAgreed(e.target.checked)}
+                                            style={{ marginTop: 3, accentColor: accent, flex: "0 0 auto" }}
+                                            aria-required="true"
+                                        />
+                                        <span>
+                                            <strong style={{ color: "var(--vb-ink)" }}>개인정보 수집 및 이용에 동의합니다</strong> <span style={{ color: "var(--vb-accent-2)", fontWeight: 600 }}>(필수)</span><br />
+                                            <span style={{ fontSize: 11, opacity: 0.75 }}>
+                                                수집 항목: 보호자 성함 · 연락처 · 학년 · 고민<br />
+                                                이용 목적: 상담 신청 응대<br />
+                                                보관 기간: 상담 종료 후, 또는 폐기 요청 시 즉시 폐기
+                                            </span>
+                                        </span>
+                                    </label>
+                                    <div style={{ fontSize: 11, marginTop: 6, padding: "0 16px", color: "var(--vb-mute)", lineHeight: 1.6 }}>
+                                        폐기 요청: <a href={`tel:${BIZ.phoneRaw}`} style={{ color: accent, fontWeight: 600 }}>{BIZ.phone}</a>
+                                    </div>
+
+                                    {/* 제출 상태 안내 */}
+                                    {submitStatus === "submitting" && (
+                                        <div role="status" aria-live="polite" style={{ marginTop: 12, padding: "10px 14px", background: "var(--vb-paper)", fontSize: 12, color: "var(--vb-ink)" }}>
+                                            전송 중...
+                                        </div>
+                                    )}
+                                    {submitStatus === "submitted" && (
+                                        <div role="status" aria-live="polite" style={{ marginTop: 12, padding: "12px 14px", background: "var(--vb-highlight)", borderLeft: `3px solid ${accent}`, fontSize: 13, color: "var(--vb-ink)", lineHeight: 1.6 }}>
+                                            <strong>✓ 외부 채널로 이어집니다.</strong><br />
+                                            <span style={{ fontSize: 12, opacity: 0.85 }}>
+                                                입력하신 정보 전송을 시도했어요. 응답이 늦어지면 <a href={`tel:${BIZ.phoneRaw}`} style={{ color: accent, fontWeight: 600 }}>{BIZ.phone}</a> 로 직접 연락주세요.
+                                            </span>
+                                            <br />
+                                            <button type="button" onClick={() => { clearSubmitTimer(); setSubmitStatus("idle"); setStep(1); setData({ name: "", grade: "", concern: "", phone: "", time: "" }); setAgreed(false); }} style={{ marginTop: 8, background: "transparent", border: "none", color: accent, fontSize: 12, fontWeight: 600, cursor: "pointer", textDecoration: "underline", padding: 0 }}>
+                                                다시 신청하기 →
+                                            </button>
+                                        </div>
+                                    )}
+
                                     <div style={{ display: "grid", gap: 8, marginTop: 20 }}>
-                                        <button type="button" onClick={submitToKakao} disabled={!data.phone} style={{ background: "#FEE500", color: "#191919", border: "none", padding: 18, fontSize: 14, fontWeight: 700, cursor: !data.phone ? "not-allowed" : "pointer", opacity: !data.phone ? 0.4 : 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
-                                            <span style={{ fontSize: 16 }}>💬</span>
+                                        <button type="button" onClick={submitToKakao} disabled={!canSubmit} style={{ background: "#FEE500", color: "#191919", border: "none", padding: 18, fontSize: 14, fontWeight: 700, cursor: !canSubmit ? "not-allowed" : "pointer", opacity: !canSubmit ? 0.4 : 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
+                                            <span style={{ fontSize: 16 }} aria-hidden="true">💬</span>
                                             카카오톡으로 상담 시작
                                         </button>
-                                        <button type="button" onClick={submitToNaver} disabled={!data.phone} style={{ background: "#03C75A", color: "white", border: "none", padding: 18, fontSize: 14, fontWeight: 700, cursor: !data.phone ? "not-allowed" : "pointer", opacity: !data.phone ? 0.4 : 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
-                                            <span style={{ background: "white", color: "#03C75A", padding: "2px 7px", borderRadius: 2, fontSize: 11, fontWeight: 800 }}>N</span>
+                                        <button type="button" onClick={submitToNaver} disabled={!canSubmit} style={{ background: "#03C75A", color: "white", border: "none", padding: 18, fontSize: 14, fontWeight: 700, cursor: !canSubmit ? "not-allowed" : "pointer", opacity: !canSubmit ? 0.4 : 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
+                                            <span style={{ background: "white", color: "#03C75A", padding: "2px 7px", borderRadius: 2, fontSize: 11, fontWeight: 800 }} aria-hidden="true">N</span>
                                             네이버 플레이스로 이동
                                         </button>
                                         <button type="button" onClick={() => setStep(2)} style={{ background: "transparent", color: "var(--vb-ink)", border: "1px solid var(--vb-line)", padding: 14, fontSize: 13, fontWeight: 500, cursor: "pointer", marginTop: 4 }}>
@@ -1138,17 +1333,17 @@
                     </Reveal>
                     <Reveal delay={150}>
                         <div style={{ position: "relative", aspectRatio: m ? "4/3" : "5/4", background: "var(--vb-bg)", border: "1px solid var(--vb-line)", overflow: "hidden" }}>
-                            <div className="placeholder-img" style={{ position: "absolute", inset: 0, color: "var(--vb-mute)", border: "none" }}>
-                                <div style={{ textAlign: "center", padding: 20 }}>
-                                    <div className="mono" style={{ fontSize: 11, letterSpacing: "0.3em", marginBottom: 8 }}>NAVER MAP</div>
-                                    <div className="display" style={{ fontSize: m ? 18 : 22 }}>화명신도시로 48</div>
-                                    <div className="mono" style={{ fontSize: 10, marginTop: 8, opacity: 0.5 }}>네이버 지도 iframe 추후 삽입</div>
-                                </div>
-                            </div>
-                            <div style={{ position: "absolute", top: 16, right: 16, background: "white", padding: "8px 12px", fontSize: 11, fontWeight: 600, display: "flex", alignItems: "center", gap: 6, boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}>
+                            {/* 임시 OSM iframe — 추후 NCP Naver Maps API 적용 시 교체 */}
+                            <iframe
+                                title="리드인 화명 용수초점 위치 — 화명신도시로 48"
+                                src="https://www.openstreetmap.org/export/embed.html?bbox=129.0078%2C35.2125%2C129.0158%2C35.2185&layer=mapnik&marker=35.2155%2C129.0118"
+                                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }}
+                                loading="lazy"
+                            />
+                            <a href={naverUrl} target="_blank" rel="noopener noreferrer" style={{ position: "absolute", top: 16, right: 16, background: "white", padding: "8px 12px", fontSize: 11, fontWeight: 600, textDecoration: "none", color: "var(--vb-ink)", display: "flex", alignItems: "center", gap: 6, boxShadow: "0 4px 12px rgba(0,0,0,0.15)" }}>
                                 <span style={{ background: "#03C75A", color: "white", padding: "1px 5px", borderRadius: 2, fontSize: 9 }}>N</span>
-                                네이버 플레이스
-                            </div>
+                                네이버 플레이스에서 보기 →
+                            </a>
                         </div>
                     </Reveal>
                 </div>
@@ -1160,7 +1355,7 @@
     function Footer() {
         const m = useMobile();
         return (
-            <div style={{ background: "var(--vb-ink)", color: "var(--vb-bg)", padding: m ? "48px 20px 32px" : "64px 40px 40px" }}>
+            <footer role="contentinfo" style={{ background: "var(--vb-ink)", color: "var(--vb-bg)", padding: m ? "48px 20px 32px" : "64px 40px 40px" }}>
                 <div style={{ maxWidth: 1240, margin: "0 auto" }}>
                     <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "2fr 1fr 1fr 1fr", gap: m ? 28 : 40, paddingBottom: m ? 32 : 48, borderBottom: "1px solid rgba(255,255,255,0.15)" }}>
                         <div>
@@ -1206,7 +1401,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </footer>
         );
     }
 
@@ -1219,14 +1414,17 @@
         ];
         return (
             <>
+                <a href="#main" className="skip-link">본문으로 건너뛰기</a>
                 <Nav accent={ACCENT} />
-                <Hero accent={ACCENT} headline={headline} />
-                <Manifesto accent={ACCENT} />
-                <Programs accent={ACCENT} />
-                <Director accent={ACCENT} />
-                <FAQ accent={ACCENT} />
-                <Consult accent={ACCENT} naverUrl={NAVER_URL} kakaoChannelId={KAKAO_CHANNEL_ID} kakaoFallbackUrl={KAKAO_FALLBACK_URL} />
-                <Location accent={ACCENT} naverUrl={NAVER_URL} kakaoChannelId={KAKAO_CHANNEL_ID} kakaoFallbackUrl={KAKAO_FALLBACK_URL} />
+                <main id="main">
+                    <Hero accent={ACCENT} headline={headline} />
+                    <Manifesto accent={ACCENT} />
+                    <Programs accent={ACCENT} />
+                    <Director accent={ACCENT} />
+                    <FAQ accent={ACCENT} />
+                    <Consult accent={ACCENT} naverUrl={NAVER_URL} kakaoChannelId={KAKAO_CHANNEL_ID} kakaoFallbackUrl={KAKAO_FALLBACK_URL} />
+                    <Location accent={ACCENT} naverUrl={NAVER_URL} kakaoChannelId={KAKAO_CHANNEL_ID} kakaoFallbackUrl={KAKAO_FALLBACK_URL} />
+                </main>
                 <Footer />
             </>
         );

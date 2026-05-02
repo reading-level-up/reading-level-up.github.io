@@ -972,19 +972,33 @@
         const [data, setData] = useState({ name: "", grade: "", concern: "", phone: "", time: "" });
         const [agreed, setAgreed] = useState(false);
         const [submitStatus, setSubmitStatus] = useState("idle"); // idle | submitting | submitted
+        const submitTimerRef = useRef(null);
         const total = 3;
         const m = useMobile();
 
+        // submitted 전환 타이머 정리 — 카드 재진입/reset 시 race 차단
+        const clearSubmitTimer = () => {
+            if (submitTimerRef.current) {
+                clearTimeout(submitTimerRef.current);
+                submitTimerRef.current = null;
+            }
+        };
+
         // Programs 카드 클릭 시 학년 사전 선택 (CustomEvent)
         // 이전 제출 완료 상태(submitted)였더라도 새 시도로 리셋해 버튼이 막히지 않게 함.
+        // 또한 진행 중인 250ms 타이머가 있으면 정리해 race 방지.
         useEffect(() => {
             const handler = (e) => {
+                clearSubmitTimer();
                 setData(d => ({ ...d, grade: e.detail, concern: "" }));
                 setStep(1);
                 setSubmitStatus("idle");
             };
             window.addEventListener('preselectGrade', handler);
-            return () => window.removeEventListener('preselectGrade', handler);
+            return () => {
+                window.removeEventListener('preselectGrade', handler);
+                clearSubmitTimer(); // unmount cleanup
+            };
         }, []);
 
         const update = (k, v) => setData((d) => ({ ...d, [k]: v }));
@@ -1049,7 +1063,9 @@
             setSubmitStatus("submitting");
             sendToWebhook();
             // 3) 시각 피드백 — "전송 시도" 상태 표시 (응답 확인 불가, 정직 표현)
-            setTimeout(() => setSubmitStatus("submitted"), 250);
+            //    timer ref 로 추적 → 카드 재진입/reset 시 cleanup
+            clearSubmitTimer();
+            submitTimerRef.current = setTimeout(() => setSubmitStatus("submitted"), 250);
         };
         const submitToKakao = () => handleSubmit("kakao");
         const submitToNaver = () => handleSubmit("naver");
@@ -1221,7 +1237,7 @@
                                                 입력하신 정보 전송을 시도했어요. 응답이 늦어지면 <a href={`tel:${BIZ.phoneRaw}`} style={{ color: accent, fontWeight: 600 }}>{BIZ.phone}</a> 로 직접 연락주세요.
                                             </span>
                                             <br />
-                                            <button type="button" onClick={() => { setSubmitStatus("idle"); setStep(1); setData({ name: "", grade: "", concern: "", phone: "", time: "" }); setAgreed(false); }} style={{ marginTop: 8, background: "transparent", border: "none", color: accent, fontSize: 12, fontWeight: 600, cursor: "pointer", textDecoration: "underline", padding: 0 }}>
+                                            <button type="button" onClick={() => { clearSubmitTimer(); setSubmitStatus("idle"); setStep(1); setData({ name: "", grade: "", concern: "", phone: "", time: "" }); setAgreed(false); }} style={{ marginTop: 8, background: "transparent", border: "none", color: accent, fontSize: 12, fontWeight: 600, cursor: "pointer", textDecoration: "underline", padding: 0 }}>
                                                 다시 신청하기 →
                                             </button>
                                         </div>

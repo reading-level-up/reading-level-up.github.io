@@ -644,6 +644,13 @@
                     </h1>
 
                     <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1fr 1fr", gap: m ? 24 : 40, marginTop: m ? 36 : 60, alignItems: "start" }}>
+                        {m && (
+                            <Reveal delay={200}>
+                                <div style={{ aspectRatio: "16/9", overflow: "hidden", border: "1px solid var(--vb-line)", background: "var(--vb-paper)" }}>
+                                    <img src="assets/hero-image.png" alt="화명동 독서논술 교실 — 책을 읽는 아이" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} loading="eager" />
+                                </div>
+                            </Reveal>
+                        )}
                         {!m && (
                             <Reveal delay={400}>
                                 <div style={{ aspectRatio: "3/4", overflow: "hidden", border: "1px solid var(--vb-line)", background: "var(--vb-paper)" }}>
@@ -798,11 +805,17 @@
         const m = useMobile();
         // time / cls 는 정확한 정보 확정 후 채우면 자동 노출됨 (조건부 렌더)
         const programs = [
-            { age: "유치부 (5–7세)", t: "그림책 테라피", c: "#F4D8A8", d: "동화구연 자격을 가진 원장과 그림책을 함께 읽고 이야기로 펼쳐가는 시간. 책이 좋아지는 첫 만남, 자기 마음을 말로 옮기는 힘을 기릅니다.", time: "", cls: "" },
-            { age: "초등 저학년", t: "리딩 빌더", c: "#E8A06B", d: "처음 만나는 어휘를 자기 것으로 만들고, 한 권의 책을 끝까지 읽는 호흡을 다지는 단계. 혼자 읽는 즐거움이 시작됩니다.", time: "", cls: "" },
-            { age: "초등 고학년", t: "사고력 논술", c: "#C66A3D", d: "글의 구조를 분해하고, 자기 언어로 다시 쓰는 훈련. 읽은 것을 자기 입으로 설명할 수 있는 단계로 옮겨갑니다.", time: "", cls: "", dark: true },
-            { age: "중등부", t: "독해 부스터", c: "#7A2F1F", d: "교과서와 시험 지문 한 단락을 정확히 이해하는 힘. 모든 과목의 토대가 되는 문해력을 단단히 다집니다.", time: "", cls: "", dark: true },
+            { age: "유치부 (5–7세)", grade: "유치부", t: "그림책 테라피", c: "#F4D8A8", d: "동화구연 자격을 가진 원장과 그림책을 함께 읽고 이야기로 펼쳐가는 시간. 책이 좋아지는 첫 만남, 자기 마음을 말로 옮기는 힘을 기릅니다.", time: "", cls: "" },
+            { age: "초등 저학년", grade: "초등 저학년", t: "리딩 빌더", c: "#E8A06B", d: "처음 만나는 어휘를 자기 것으로 만들고, 한 권의 책을 끝까지 읽는 호흡을 다지는 단계. 혼자 읽는 즐거움이 시작됩니다.", time: "", cls: "" },
+            { age: "초등 고학년", grade: "초등 고학년", t: "사고력 논술", c: "#C66A3D", d: "글의 구조를 분해하고, 자기 언어로 다시 쓰는 훈련. 읽은 것을 자기 입으로 설명할 수 있는 단계로 옮겨갑니다.", time: "", cls: "", dark: true },
+            { age: "중등부", grade: "중등부", t: "독해 부스터", c: "#7A2F1F", d: "교과서와 시험 지문 한 단락을 정확히 이해하는 힘. 모든 과목의 토대가 되는 문해력을 단단히 다집니다.", time: "", cls: "", dark: true },
         ];
+
+        const goToConsultWithGrade = (grade) => {
+            window.dispatchEvent(new CustomEvent('preselectGrade', { detail: grade }));
+            const el = document.getElementById('consult');
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
         return (
             <div id="programs" style={{ background: "var(--vb-bg)", padding: m ? "72px 20px" : "100px 40px" }}>
                 <div style={{ maxWidth: 1240, margin: "0 auto" }}>
@@ -827,8 +840,13 @@
                     <div style={{ display: "grid", gridTemplateColumns: m ? "1fr" : "repeat(4, 1fr)", gap: 0, borderTop: "2px solid var(--vb-ink)" }}>
                         {programs.map((p, i) => (
                             <div key={i}
+                                role="button"
+                                tabIndex={0}
+                                aria-label={`${p.t} 프로그램으로 상담 신청 — ${p.age}`}
                                 onMouseEnter={() => setHover(i)}
                                 onMouseLeave={() => setHover(null)}
+                                onClick={() => goToConsultWithGrade(p.grade)}
+                                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToConsultWithGrade(p.grade); } }}
                                 style={{
                                     background: p.c,
                                     color: p.dark ? "var(--vb-bg)" : "var(--vb-ink)",
@@ -960,10 +978,32 @@
     function Consult({ accent, naverUrl, kakaoChannelId, kakaoFallbackUrl }) {
         const [step, setStep] = useState(1);
         const [data, setData] = useState({ name: "", grade: "", concern: "", phone: "", time: "" });
+        const [agreed, setAgreed] = useState(false);
+        const [submitStatus, setSubmitStatus] = useState("idle"); // idle | submitting | success
         const total = 3;
         const m = useMobile();
 
+        // Programs 카드 클릭 시 학년 사전 선택 (CustomEvent)
+        useEffect(() => {
+            const handler = (e) => {
+                setData(d => ({ ...d, grade: e.detail }));
+                setStep(1);
+            };
+            window.addEventListener('preselectGrade', handler);
+            return () => window.removeEventListener('preselectGrade', handler);
+        }, []);
+
         const update = (k, v) => setData((d) => ({ ...d, [k]: v }));
+
+        // 전화 자동 포매팅 (010-XXXX-XXXX)
+        const formatPhone = (raw) => {
+            const v = raw.replace(/\D/g, '').slice(0, 11);
+            if (v.length <= 3) return v;
+            if (v.length <= 7) return v.slice(0, 3) + '-' + v.slice(3);
+            return v.slice(0, 3) + '-' + v.slice(3, 7) + '-' + v.slice(7);
+        };
+        const phoneValid = /^010-\d{3,4}-\d{4}$/.test(data.phone);
+        const canSubmit = phoneValid && agreed && submitStatus !== "submitting";
 
         const sendToWebhook = () => {
             const payload = {
@@ -976,7 +1016,6 @@
                 message: data.concern,
                 timestamp: new Date().toISOString(),
             };
-            // fire-and-forget — 외부 채널 이동 우선, 실패해도 진행
             try {
                 fetch(WEBHOOK_URL, {
                     method: "POST",
@@ -989,23 +1028,30 @@
             }
         };
 
-        const submitToNaver = () => {
+        const handleSubmit = (channel) => {
+            if (!canSubmit) return;
+            setSubmitStatus("submitting");
             sendToWebhook();
-            window.open(naverUrl, "_blank", "noopener");
-        };
-        const submitToKakao = () => {
-            sendToWebhook();
-            if (window.Kakao?.Channel?.chat) {
-                try {
-                    window.Kakao.Channel.chat({ channelPublicId: kakaoChannelId });
-                    return;
-                } catch (e) {
-                    console.warn("Kakao.Channel.chat failed:", e);
+            // brief delay so user sees "전송 중" → "접수됨"
+            setTimeout(() => {
+                setSubmitStatus("success");
+                if (channel === "kakao") {
+                    if (window.Kakao?.Channel?.chat) {
+                        try {
+                            window.Kakao.Channel.chat({ channelPublicId: kakaoChannelId });
+                            return;
+                        } catch (e) {
+                            console.warn("Kakao.Channel.chat failed:", e);
+                        }
+                    }
+                    window.open(kakaoFallbackUrl, "_blank", "noopener");
+                } else {
+                    window.open(naverUrl, "_blank", "noopener");
                 }
-            }
-            // SDK 미로드 시 폴백 — 채널 페이지 새 탭
-            window.open(kakaoFallbackUrl, "_blank", "noopener");
+            }, 250);
         };
+        const submitToKakao = () => handleSubmit("kakao");
+        const submitToNaver = () => handleSubmit("naver");
 
         return (
             <div id="consult" style={{ background: "var(--vb-ink)", color: "var(--vb-bg)", padding: m ? "80px 20px" : "120px 40px", position: "relative", overflow: "hidden" }}>
@@ -1085,7 +1131,21 @@
                                     <div className="mono" style={{ fontSize: 10, color: accent, letterSpacing: "0.25em", marginBottom: 24 }}>STEP 03 — 연락 방법</div>
                                     <div style={{ display: "grid", gap: 20 }}>
                                         <FormField label="연락처">
-                                            <input className="vb-input" type="tel" inputMode="tel" placeholder="010-0000-0000" value={data.phone} onChange={(e) => update("phone", e.target.value)} />
+                                            <input
+                                                className="vb-input"
+                                                type="tel"
+                                                inputMode="tel"
+                                                placeholder="010-0000-0000"
+                                                value={data.phone}
+                                                onChange={(e) => update("phone", formatPhone(e.target.value))}
+                                                aria-invalid={data.phone && !phoneValid ? "true" : "false"}
+                                                aria-describedby={data.phone && !phoneValid ? "phone-error" : undefined}
+                                            />
+                                            {data.phone && !phoneValid && (
+                                                <div id="phone-error" role="alert" style={{ fontSize: 11, color: "var(--vb-accent-2)", marginTop: 6, fontWeight: 600 }}>
+                                                    010-XXXX-XXXX 형식으로 입력해주세요
+                                                </div>
+                                            )}
                                         </FormField>
                                         <FormField label="희망 연락 시간 (선택)">
                                             <input className="vb-input" placeholder="예) 평일 오후 3–5시" value={data.time} onChange={(e) => update("time", e.target.value)} />
@@ -1094,14 +1154,48 @@
                                     <div style={{ marginTop: 20, padding: "14px 16px", background: "var(--vb-paper)", fontSize: 12, color: "var(--vb-ink-2)", lineHeight: 1.7, borderLeft: `3px solid ${accent}` }}>
                                         편하신 채널로 이어가세요. 카카오톡 채널은 24시간 메시지 가능,
                                         네이버 플레이스에서는 후기와 위치 확인이 가능합니다.
+                                        <br /><br />
+                                        <strong>접수 후 평일 영업시간 (월–금 10:00–22:00) 안에 답장드립니다.</strong>
                                     </div>
+
+                                    {/* 개인정보 수집·이용 동의 */}
+                                    <label style={{ display: "flex", gap: 10, alignItems: "flex-start", marginTop: 16, padding: "14px 16px", background: "var(--vb-bg)", border: agreed ? `1.5px solid ${accent}` : "1px solid var(--vb-line)", fontSize: 12, color: "var(--vb-ink-2)", cursor: "pointer", lineHeight: 1.65, transition: "border-color .15s" }}>
+                                        <input
+                                            type="checkbox"
+                                            checked={agreed}
+                                            onChange={(e) => setAgreed(e.target.checked)}
+                                            style={{ marginTop: 3, accentColor: accent, flex: "0 0 auto" }}
+                                            aria-required="true"
+                                        />
+                                        <span>
+                                            <strong style={{ color: "var(--vb-ink)" }}>개인정보 수집 및 이용에 동의합니다</strong> <span style={{ color: "var(--vb-accent-2)", fontWeight: 600 }}>(필수)</span><br />
+                                            <span style={{ fontSize: 11, opacity: 0.75 }}>
+                                                수집 항목: 보호자 성함 · 연락처 · 학년 · 고민<br />
+                                                이용 목적: 상담 신청 응대<br />
+                                                보관 기간: 1년 (이후 자동 폐기)
+                                            </span>
+                                        </span>
+                                    </label>
+
+                                    {/* 제출 상태 안내 */}
+                                    {submitStatus === "submitting" && (
+                                        <div role="status" aria-live="polite" style={{ marginTop: 12, padding: "10px 14px", background: "var(--vb-paper)", fontSize: 12, color: "var(--vb-ink)" }}>
+                                            전송 중...
+                                        </div>
+                                    )}
+                                    {submitStatus === "success" && (
+                                        <div role="status" aria-live="polite" style={{ marginTop: 12, padding: "12px 14px", background: "var(--vb-highlight)", borderLeft: `3px solid ${accent}`, fontSize: 13, color: "var(--vb-ink)", fontWeight: 600 }}>
+                                            ✓ 신청이 접수됐습니다. 외부 채널로 이어집니다.
+                                        </div>
+                                    )}
+
                                     <div style={{ display: "grid", gap: 8, marginTop: 20 }}>
-                                        <button type="button" onClick={submitToKakao} disabled={!data.phone} style={{ background: "#FEE500", color: "#191919", border: "none", padding: 18, fontSize: 14, fontWeight: 700, cursor: !data.phone ? "not-allowed" : "pointer", opacity: !data.phone ? 0.4 : 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
-                                            <span style={{ fontSize: 16 }}>💬</span>
+                                        <button type="button" onClick={submitToKakao} disabled={!canSubmit} style={{ background: "#FEE500", color: "#191919", border: "none", padding: 18, fontSize: 14, fontWeight: 700, cursor: !canSubmit ? "not-allowed" : "pointer", opacity: !canSubmit ? 0.4 : 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
+                                            <span style={{ fontSize: 16 }} aria-hidden="true">💬</span>
                                             카카오톡으로 상담 시작
                                         </button>
-                                        <button type="button" onClick={submitToNaver} disabled={!data.phone} style={{ background: "#03C75A", color: "white", border: "none", padding: 18, fontSize: 14, fontWeight: 700, cursor: !data.phone ? "not-allowed" : "pointer", opacity: !data.phone ? 0.4 : 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
-                                            <span style={{ background: "white", color: "#03C75A", padding: "2px 7px", borderRadius: 2, fontSize: 11, fontWeight: 800 }}>N</span>
+                                        <button type="button" onClick={submitToNaver} disabled={!canSubmit} style={{ background: "#03C75A", color: "white", border: "none", padding: 18, fontSize: 14, fontWeight: 700, cursor: !canSubmit ? "not-allowed" : "pointer", opacity: !canSubmit ? 0.4 : 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
+                                            <span style={{ background: "white", color: "#03C75A", padding: "2px 7px", borderRadius: 2, fontSize: 11, fontWeight: 800 }} aria-hidden="true">N</span>
                                             네이버 플레이스로 이동
                                         </button>
                                         <button type="button" onClick={() => setStep(2)} style={{ background: "transparent", color: "var(--vb-ink)", border: "1px solid var(--vb-line)", padding: 14, fontSize: 13, fontWeight: 500, cursor: "pointer", marginTop: 4 }}>
@@ -1185,17 +1279,17 @@
                     </Reveal>
                     <Reveal delay={150}>
                         <div style={{ position: "relative", aspectRatio: m ? "4/3" : "5/4", background: "var(--vb-bg)", border: "1px solid var(--vb-line)", overflow: "hidden" }}>
-                            <div className="placeholder-img" style={{ position: "absolute", inset: 0, color: "var(--vb-mute)", border: "none" }}>
-                                <div style={{ textAlign: "center", padding: 20 }}>
-                                    <div className="mono" style={{ fontSize: 11, letterSpacing: "0.3em", marginBottom: 8 }}>NAVER MAP</div>
-                                    <div className="display" style={{ fontSize: m ? 18 : 22 }}>화명신도시로 48</div>
-                                    <div className="mono" style={{ fontSize: 10, marginTop: 8, opacity: 0.5 }}>네이버 지도 iframe 추후 삽입</div>
-                                </div>
-                            </div>
-                            <div style={{ position: "absolute", top: 16, right: 16, background: "white", padding: "8px 12px", fontSize: 11, fontWeight: 600, display: "flex", alignItems: "center", gap: 6, boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}>
+                            {/* 임시 OSM iframe — 추후 NCP Naver Maps API 적용 시 교체 */}
+                            <iframe
+                                title="리드인 화명 용수초점 위치 — 화명신도시로 48"
+                                src="https://www.openstreetmap.org/export/embed.html?bbox=129.0078%2C35.2125%2C129.0158%2C35.2185&layer=mapnik&marker=35.2155%2C129.0118"
+                                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }}
+                                loading="lazy"
+                            />
+                            <a href={naverUrl} target="_blank" rel="noopener noreferrer" style={{ position: "absolute", top: 16, right: 16, background: "white", padding: "8px 12px", fontSize: 11, fontWeight: 600, textDecoration: "none", color: "var(--vb-ink)", display: "flex", alignItems: "center", gap: 6, boxShadow: "0 4px 12px rgba(0,0,0,0.15)" }}>
                                 <span style={{ background: "#03C75A", color: "white", padding: "1px 5px", borderRadius: 2, fontSize: 9 }}>N</span>
-                                네이버 플레이스
-                            </div>
+                                네이버 플레이스에서 보기 →
+                            </a>
                         </div>
                     </Reveal>
                 </div>

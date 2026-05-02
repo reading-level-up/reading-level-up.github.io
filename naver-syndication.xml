@@ -1,100 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://webmastertool.naver.com">
     <id>readin-hwamyeong.kr</id>
-    <title><![CDATA[화명 리드인 현대공부방 | 독서논술 그림책테라피 용수초점]]></title>
+    <title><![CDATA[리드인 화명 용수초점 | 화명동 독서논술 교실]]></title>
     <author>
-        <name><![CDATA[화명 리드인 현대공부방]]></name>
+        <name><![CDATA[리드인 화명 용수초점]]></name>
         <url>https://readin-hwamyeong.kr/</url>
         <email></email>
     </author>
-    <updated>2026-01-14T00:00:00+09:00</updated>
-    <link rel="site" href="https://readin-hwamyeong.kr/" title="화명 리드인 현대공부방"/>
+    <updated>2026-05-02T00:00:00+09:00</updated>
+    <link rel="site" href="https://readin-hwamyeong.kr/" title="리드인 화명 용수초점"/>
 
     <entry>
         <id>https://readin-hwamyeong.kr/</id>
-        <title><![CDATA[화명 리드인 현대공부방 | 독서논술 그림책테라피 - 용수초 화명동 공부방]]></title>
+        <title><![CDATA[리드인 화명 용수초점 — 한 권의 책을 끝까지 읽어내는 힘]]></title>
         <author>
-            <name><![CDATA[화명 리드인 현대공부방]]></name>
+            <name><![CDATA[리드인 화명 용수초점]]></name>
         </author>
-        <updated>2026-01-14T00:00:00+09:00</updated>
-        <published>2026-01-14T00:00:00+09:00</published>
-        <link rel="via" href="https://readin-hwamyeong.kr/" title="화명 리드인 현대공부방"/>
+        <updated>2026-05-02T00:00:00+09:00</updated>
+        <published>2026-05-02T00:00:00+09:00</published>
+        <link rel="via" href="https://readin-hwamyeong.kr/" title="리드인 화명 용수초점"/>
         <link rel="mobile" href="https://readin-hwamyeong.kr/"/>
         <category term="교육" label="교육"/>
-        <category term="독서" label="독서"/>
-        <category term="논술" label="논술"/>
+        <category term="독서논술" label="독서논술"/>
+        <category term="문해력" label="문해력"/>
         <content type="html"><![CDATA[
-            <h1>읽지 못하면, 풀 수도 없습니다.</h1>
-            <p>유치부 정서 함양부터 중등부 성적 향상까지 책임집니다.</p>
+            <h1>한 권의 책을 끝까지 읽어내는 힘</h1>
+            <p>세상에 선한 영향력을 끼치고 싶은 어른으로서, 우리 동네 아이들이 책 한 권을 끝까지 읽어내는 힘을 갖추도록 곁에 있겠습니다. — 이현진 원장</p>
 
-            <h2>혹시 이런 고민 있으신가요?</h2>
+            <h2>우리는 이렇게 다릅니다</h2>
             <ul>
-                <li>책 읽기를 싫어하는 아이 - 강제적인 독서는 오히려 역효과를 불러옵니다.</li>
-                <li>중학생이 되어 무너지는 성적 - 원인은 문해력 부족입니다.</li>
+                <li>진도가 아니라 이해를</li>
+                <li>숙제가 아니라 호기심을</li>
+                <li>학원이 아니라 한 사람의 책장을 만듭니다</li>
             </ul>
 
-            <h2>화명 현대 공부방 x 리드인 만의 솔루션</h2>
+            <h2>3가지 약속</h2>
             <ul>
-                <li>과학적인 진단 & 맞춤 수업 - 1:1 맞춤 커리큘럼 제공</li>
-                <li>스스로 공부하는 '공부 머리' - 자기주도 학습의 시작</li>
+                <li>진도식 학습 거부 — 한 권의 책에 머무를 시간을 충분히 확보합니다.</li>
+                <li>1:1 진단 후 수업 — 30명 강의실은 우리가 아닌 다른 곳입니다.</li>
+                <li>원장 직강 원칙 — 보조 강사 없이 원장이 끝까지 함께합니다.</li>
             </ul>
 
-            <h2>정서 케어 & 심리 안정 프로그램</h2>
-            <ul>
-                <li>그림책테라피 - 정서 함양 및 심리 치유</li>
-                <li>동화구연 - 전문가 자격증 보유</li>
-            </ul>
-
-            <p><strong>무료 레벨 테스트 신청하세요!</strong></p>
-            <p>문의: 010-2811-4221</p>
-            <p>주소: 부산광역시 북구 화명신도시로 48 (화명 현대아파트)</p>
-            <p>인근 학교: 용수초, 학사초, 명진초, 금명초, 용수중, 화명중</p>
+            <p>전화: 010-2811-4221 · 주소: 부산광역시 북구 화명신도시로 48 (현대2차아파트 단지 내). 용수초에서 건널목 하나, 도보 1–2분.</p>
         ]]></content>
-        <summary><![CDATA[읽지 못하면 풀 수도 없습니다. 유치부 정서함양부터 중등부 성적향상까지! 화명동 독서논술, 그림책테라피, 동화구연 전문. 용수초 인근 화명 현대 공부방에서 무료 레벨테스트 받아보세요. 1:1 맞춤 커리큘럼 제공.]]></summary>
+        <summary><![CDATA[화명동 독서논술 교실 리드인 화명 용수초점. 한 권의 책을 끝까지 읽어내는 힘. 그림책 테라피·동화구연 1급 자격 보유 원장 직강. 회당 정원 8명 1:1 진단 후 수업.]]></summary>
     </entry>
 
     <entry>
         <id>https://readin-hwamyeong.kr/#programs</id>
-        <title><![CDATA[화명동 독서논술 프로그램 - 초등논술 중등논술 문해력 향상]]></title>
+        <title><![CDATA[리드인 화명 프로그램 — 유치부부터 중등까지 4단계 책장]]></title>
         <author>
-            <name><![CDATA[화명 리드인 현대공부방]]></name>
+            <name><![CDATA[리드인 화명 용수초점]]></name>
         </author>
-        <updated>2026-01-14T00:00:00+09:00</updated>
-        <published>2026-01-14T00:00:00+09:00</published>
+        <updated>2026-05-02T00:00:00+09:00</updated>
+        <published>2026-05-02T00:00:00+09:00</published>
         <link rel="via" href="https://readin-hwamyeong.kr/#programs" title="독서논술 프로그램"/>
         <category term="독서논술" label="독서논술"/>
+        <category term="그림책 테라피" label="그림책 테라피"/>
         <category term="문해력" label="문해력"/>
         <content type="html"><![CDATA[
-            <h2>독서 코칭</h2>
-            <p>문해력 향상을 위한 체계적인 1:1 독서 지도. 유치부 그림책테라피부터 중등부 학습독서까지.</p>
+            <h2>그림책 테라피 (유치부 5–7세)</h2>
+            <p>동화구연 자격을 가진 원장이 그림책을 읽고 함께 이야기를 만듭니다. 정서·표현력·집중력 케어. 주 2회·회당 50분, 최대 6명.</p>
 
-            <h2>논술 교육</h2>
-            <p>초등논술, 중등논술 전문. 사고력과 표현력을 키우는 체계적인 논술 지도.</p>
+            <h2>리딩 빌더 (초등 저학년)</h2>
+            <p>어휘 진단을 통해 또래 평균까지 끌어올리는 베이스 빌딩. 주 2회·회당 60분 1:1 코칭, 최대 8명.</p>
 
-            <h2>그림책테라피</h2>
-            <p>그림책을 활용한 정서 함양 및 심리 치유 프로그램. 아이의 마음을 읽고 공감하는 독서 치료.</p>
+            <h2>사고력 논술 (초등 고학년)</h2>
+            <p>글의 구조를 분해하고 자기 언어로 다시 쓰는 훈련. 중등 진학 직전 6개월 집중반. 주 2회·회당 80분, 최대 8명.</p>
 
-            <h2>동화구연</h2>
-            <p>동화구연 전문가 자격증 보유. 언어 발달과 상상력 증진 프로그램.</p>
+            <h2>독해 부스터 (중등부)</h2>
+            <p>교과서·시험 지문 분석. 국어/사회 1등급 도달을 목표로 한 역추적 코칭. 주 2회·회당 90분, 최대 6명.</p>
         ]]></content>
-        <summary><![CDATA[화명동 독서논술 프로그램. 독서 코칭, 논술 교육, 그림책테라피, 동화구연. 유치부부터 중등부까지 1:1 맞춤 커리큘럼으로 문해력을 키워드립니다.]]></summary>
+        <summary><![CDATA[화명동 독서논술 프로그램 4단계: 그림책 테라피, 리딩 빌더, 사고력 논술, 독해 부스터. 유치부부터 중등부까지 1:1 진단 후 수업, 원장 직강.]]></summary>
     </entry>
 
     <entry>
         <id>https://readin-hwamyeong.kr/#location</id>
-        <title><![CDATA[화명 리드인 위치 - 용수초 화명중 인근 수정역 화명역]]></title>
+        <title><![CDATA[리드인 화명 위치 — 용수초에서 건널목 하나, 도보 1–2분]]></title>
         <author>
-            <name><![CDATA[화명 리드인 현대공부방]]></name>
+            <name><![CDATA[리드인 화명 용수초점]]></name>
         </author>
-        <updated>2026-01-14T00:00:00+09:00</updated>
-        <published>2026-01-14T00:00:00+09:00</published>
+        <updated>2026-05-02T00:00:00+09:00</updated>
+        <published>2026-05-02T00:00:00+09:00</published>
         <link rel="via" href="https://readin-hwamyeong.kr/#location" title="위치 안내"/>
         <category term="화명동" label="화명동"/>
-        <category term="공부방" label="공부방"/>
+        <category term="용수초" label="용수초"/>
         <content type="html"><![CDATA[
-            <h2>화명 리드인 현대공부방 위치</h2>
-            <p>주소: 부산광역시 북구 화명신도시로 48 (화명 현대아파트)</p>
+            <h2>리드인 화명 용수초점 위치</h2>
+            <p>주소: 부산광역시 북구 화명신도시로 48 (현대2차아파트 단지 내)</p>
             <p>전화: 010-2811-4221</p>
+            <p>운영시간: 월–금 10:00–22:00, 토 10:00–14:00 (일 휴무)</p>
+
+            <h3>오시는 길</h3>
+            <p>현대2차아파트 단지 내에 있어, 용수초 학생이라면 건널목 하나만 건너 단지 내 통로로 곧장 연결됩니다. 크게 돌아갈 필요 없이 도보 1–2분 거리예요.</p>
 
             <h3>인근 학교</h3>
             <ul>
@@ -105,6 +103,6 @@
             <h3>교통</h3>
             <p>수정역, 화명역에서 도보 거리</p>
         ]]></content>
-        <summary><![CDATA[화명 리드인 현대공부방 위치. 부산 북구 화명신도시로 48. 용수초, 학사초, 명진초, 용수중, 화명중 인근. 수정역, 화명역 도보거리.]]></summary>
+        <summary><![CDATA[리드인 화명 용수초점 위치. 부산 북구 화명신도시로 48 현대2차아파트 단지 내. 용수초에서 건널목 하나, 도보 1–2분. 용수중·화명중 인근.]]></summary>
     </entry>
 </feed>

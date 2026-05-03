@@ -132,7 +132,8 @@
                 ],
                 "sameAs": [
                     "https://map.naver.com/p/entry/place/2037075786",
-                    "https://pf.kakao.com/_bQzxbX"
+                    "https://pf.kakao.com/_bQzxbX",
+                    "https://www.instagram.com/readin_hwamyeong/"
                 ],
                 "contactPoint": {
                     "@type": "ContactPoint",
@@ -482,6 +483,7 @@
     const NAVER_MAP_POSITION = { lat: 35.22886612163122, lng: 129.01014047031887 };
     const KAKAO_CHANNEL_ID = "_bQzxbX"; /* 카카오톡 채널 Public ID — 채널 변경 시 한 줄 교체 */
     const KAKAO_FALLBACK_URL = `https://pf.kakao.com/${KAKAO_CHANNEL_ID}`;
+    const INSTAGRAM_URL = "https://www.instagram.com/readin_hwamyeong/";
     const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxzTNnRyWYJredeXX7YAYratopWmboyiqNxMt1LXv7PStINtSoD3qBBXoW8DIfCtOAu/exec";
 
     const ACCENT = "#1D3A2A";
@@ -1039,7 +1041,7 @@
         );
     }
 
-    function Consult({ accent, naverUrl, kakaoChannelId, kakaoFallbackUrl }) {
+    function Consult({ accent, naverUrl, kakaoChannelId, kakaoFallbackUrl, instagramUrl }) {
         const [step, setStep] = useState(1);
         const [data, setData] = useState({ name: "", grade: "", concern: "", phone: "", time: "" });
         const [agreed, setAgreed] = useState(false);
@@ -1161,7 +1163,8 @@
                                 {BIZ.hours.map((h, i) => <span key={i}>{h}<br /></span>)}
                                 📍 {BIZ.address}<br />
                                 <span style={{ paddingLeft: 18, opacity: 0.7 }}>{BIZ.addressDetail}</span><br />
-                                🔗 <a href={naverUrl} target="_blank" rel="noopener noreferrer" style={{ color: "var(--vb-highlight)", textDecoration: "none" }}>네이버 플레이스에서 후기 보기 →</a>
+                                🔗 <a href={naverUrl} target="_blank" rel="noopener noreferrer" style={{ color: "var(--vb-highlight)", textDecoration: "none" }}>네이버 플레이스에서 후기 보기 →</a><br />
+                                📷 <a href={instagramUrl} target="_blank" rel="noopener noreferrer" style={{ color: "var(--vb-highlight)", textDecoration: "none" }}>인스타그램에서 일상 보기 →</a>
                             </div>
 
                             <div style={{ marginTop: 50, display: "flex", gap: 8, alignItems: "center" }}>
@@ -1519,6 +1522,7 @@
                             <div className="mono" style={{ fontSize: 10, letterSpacing: "0.2em", color: "var(--vb-highlight)", marginBottom: 14 }}>CONTACT</div>
                             <div style={{ fontSize: 13, lineHeight: 1.9, color: "rgba(255,255,255,0.7)" }}>
                                 <a href={`tel:${BIZ.phoneRaw}`} style={{ color: "rgba(255,255,255,0.85)", textDecoration: "none" }}>{BIZ.phone}</a><br />
+                                <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.85)", textDecoration: "none" }}>📷 Instagram</a><br />
                                 <a href="#consult" style={{ color: "var(--vb-highlight)", textDecoration: "none" }}>상담 신청 →</a>
                             </div>
                         </div>
@@ -1555,7 +1559,7 @@
                     <Programs accent={ACCENT} />
                     <Director accent={ACCENT} />
                     <FAQ accent={ACCENT} />
-                    <Consult accent={ACCENT} naverUrl={NAVER_URL} kakaoChannelId={KAKAO_CHANNEL_ID} kakaoFallbackUrl={KAKAO_FALLBACK_URL} />
+                    <Consult accent={ACCENT} naverUrl={NAVER_URL} kakaoChannelId={KAKAO_CHANNEL_ID} kakaoFallbackUrl={KAKAO_FALLBACK_URL} instagramUrl={INSTAGRAM_URL} />
                     <Location accent={ACCENT} naverUrl={NAVER_URL} kakaoChannelId={KAKAO_CHANNEL_ID} kakaoFallbackUrl={KAKAO_FALLBACK_URL} />
                 </main>
                 <Footer />

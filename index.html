@@ -494,16 +494,13 @@
         window.__readingNaverMapsPromise = new Promise((resolve, reject) => {
             const callbackName = "__readingNaverMapsReady";
             let timeoutId;
-
-            // 우리가 등록한 auth failure handler — cleanup 시 우리 것만 정리
-            const ourAuthFailure = () => {
-                cleanup();
-                reject(new Error("NAVER Maps authentication failure (domain whitelist / ncpKeyId)"));
-            };
+            let pollId;
+            let settled = false;
             const previousAuthFailure = window.navermap_authFailure;
 
             const cleanup = () => {
                 if (timeoutId) window.clearTimeout(timeoutId);
+                if (pollId) window.clearTimeout(pollId);
                 // navermap_authFailure 가 여전히 우리 핸들러일 때만 복원/삭제 (다른 사용자 영향 X)
                 if (window.navermap_authFailure === ourAuthFailure) {
                     if (previousAuthFailure) {
@@ -515,30 +512,44 @@
                 try { delete window[callbackName]; } catch (e) { window[callbackName] = undefined; }
             };
 
+            const finish = (action) => {
+                if (settled) return;
+                settled = true;
+                cleanup();
+                action();
+            };
+
+            const waitForMapsNamespace = () => {
+                if (settled) return;
+                if (window.naver?.maps) {
+                    finish(() => resolve(window.naver.maps));
+                    return;
+                }
+                pollId = window.setTimeout(waitForMapsNamespace, 25);
+            };
+
+            // 우리가 등록한 auth failure handler — cleanup 시 우리 것만 정리
+            const ourAuthFailure = () => {
+                finish(() => reject(new Error("NAVER Maps authentication failure (domain whitelist / ncpKeyId)")));
+            };
+
             // SDK 로드 전 인증 실패 핸들러 등록 (공식 문서 패턴)
             window.navermap_authFailure = ourAuthFailure;
 
             // 8초 timeout — 인증 실패 외 네트워크 지연 등 대비 (기존 안전망 유지)
             timeoutId = window.setTimeout(() => {
-                cleanup();
-                reject(new Error("NAVER Maps SDK load timeout"));
+                finish(() => reject(new Error("NAVER Maps SDK load timeout")));
             }, 8000);
 
             window[callbackName] = () => {
-                cleanup();
-                if (window.naver?.maps) {
-                    resolve(window.naver.maps);
-                    return;
-                }
-                reject(new Error("NAVER Maps SDK loaded without maps namespace"));
+                waitForMapsNamespace();
             };
 
             const script = document.createElement("script");
             script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${encodeURIComponent(clientId)}&callback=${callbackName}`;
             script.async = true;
             script.onerror = () => {
-                cleanup();
-                reject(new Error("Failed to load NAVER Maps SDK"));
+                finish(() => reject(new Error("Failed to load NAVER Maps SDK")));
             };
             document.head.appendChild(script);
         });

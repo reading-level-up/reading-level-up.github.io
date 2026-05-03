@@ -1375,10 +1375,27 @@
                         mapTypeControl: false,
                     });
 
-                    new maps.Marker({
+                    const marker = new maps.Marker({
                         position: center,
                         map,
                         title: BIZ.name,
+                    });
+
+                    const infoWindow = new maps.InfoWindow({
+                        content: `
+                            <a href="${naverUrl}" target="_blank" rel="noopener noreferrer" style="display:block;min-width:190px;padding:12px 14px;text-decoration:none;color:#1D3A2A;font-family:Pretendard,-apple-system,BlinkMacSystemFont,sans-serif;">
+                                <strong style="display:block;font-size:13px;margin-bottom:4px;">${BIZ.name}</strong>
+                                <span style="display:block;font-size:12px;color:#526158;line-height:1.45;">네이버 플레이스에서 보기</span>
+                            </a>
+                        `,
+                        borderWidth: 0,
+                        anchorSize: new maps.Size(12, 10),
+                        backgroundColor: "#FFFFFF",
+                    });
+
+                    infoWindow.open(map, marker);
+                    maps.Event.addListener(marker, "click", () => {
+                        window.open(naverUrl, "_blank", "noopener");
                     });
                 })
                 .catch((error) => {
@@ -1387,7 +1404,7 @@
                 });
 
             return () => { cancelled = true; };
-        }, []);
+        }, [naverUrl]);
 
         const openKakaoChat = () => {
             if (window.Kakao?.Channel?.chat) {

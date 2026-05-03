@@ -478,6 +478,8 @@
 
     /* ─────────────── External channels ─────────────── */
     const NAVER_URL = "https://naver.me/GwfEVFn4";
+    const NAVER_MAP_CLIENT_ID = "g5krcmi7c6";
+    const NAVER_MAP_POSITION = { lat: 35.229040, lng: 129.010522 };
     const KAKAO_CHANNEL_ID = "_bQzxbX"; /* 카카오톡 채널 Public ID — 채널 변경 시 한 줄 교체 */
     const KAKAO_FALLBACK_URL = `https://pf.kakao.com/${KAKAO_CHANNEL_ID}`;
     const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxzTNnRyWYJredeXX7YAYratopWmboyiqNxMt1LXv7PStINtSoD3qBBXoW8DIfCtOAu/exec";
@@ -485,6 +487,65 @@
     const ACCENT = "#1D3A2A";
 
     /* ─────────────── Hooks ─────────────── */
+    function loadNaverMaps(clientId) {
+        if (window.naver?.maps) return Promise.resolve(window.naver.maps);
+        if (window.__readingNaverMapsPromise) return window.__readingNaverMapsPromise;
+
+        window.__readingNaverMapsPromise = new Promise((resolve, reject) => {
+            const callbackName = "__readingNaverMapsReady";
+            let timeoutId;
+
+            // 우리가 등록한 auth failure handler — cleanup 시 우리 것만 정리
+            const ourAuthFailure = () => {
+                cleanup();
+                reject(new Error("NAVER Maps authentication failure (domain whitelist / ncpKeyId)"));
+            };
+            const previousAuthFailure = window.navermap_authFailure;
+
+            const cleanup = () => {
+                if (timeoutId) window.clearTimeout(timeoutId);
+                // navermap_authFailure 가 여전히 우리 핸들러일 때만 복원/삭제 (다른 사용자 영향 X)
+                if (window.navermap_authFailure === ourAuthFailure) {
+                    if (previousAuthFailure) {
+                        window.navermap_authFailure = previousAuthFailure;
+                    } else {
+                        try { delete window.navermap_authFailure; } catch (e) { window.navermap_authFailure = undefined; }
+                    }
+                }
+                try { delete window[callbackName]; } catch (e) { window[callbackName] = undefined; }
+            };
+
+            // SDK 로드 전 인증 실패 핸들러 등록 (공식 문서 패턴)
+            window.navermap_authFailure = ourAuthFailure;
+
+            // 8초 timeout — 인증 실패 외 네트워크 지연 등 대비 (기존 안전망 유지)
+            timeoutId = window.setTimeout(() => {
+                cleanup();
+                reject(new Error("NAVER Maps SDK load timeout"));
+            }, 8000);
+
+            window[callbackName] = () => {
+                cleanup();
+                if (window.naver?.maps) {
+                    resolve(window.naver.maps);
+                    return;
+                }
+                reject(new Error("NAVER Maps SDK loaded without maps namespace"));
+            };
+
+            const script = document.createElement("script");
+            script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${encodeURIComponent(clientId)}&callback=${callbackName}`;
+            script.async = true;
+            script.onerror = () => {
+                cleanup();
+                reject(new Error("Failed to load NAVER Maps SDK"));
+            };
+            document.head.appendChild(script);
+        });
+
+        return window.__readingNaverMapsPromise;
+    }
+
     function useReveal(opts = {}) {
         const ref = useRef(null);
         const [visible, setVisible] = useState(false);
@@ -1282,6 +1343,41 @@
     /* ─────────────── LOCATION ─────────────── */
     function Location({ accent, naverUrl, kakaoChannelId, kakaoFallbackUrl }) {
         const m = useMobile();
+        const mapRef = useRef(null);
+        const [mapFailed, setMapFailed] = useState(false);
+
+        useEffect(() => {
+            let cancelled = false;
+
+            loadNaverMaps(NAVER_MAP_CLIENT_ID)
+                .then((maps) => {
+                    if (cancelled || !mapRef.current) return;
+
+                    const center = new maps.LatLng(NAVER_MAP_POSITION.lat, NAVER_MAP_POSITION.lng);
+                    const map = new maps.Map(mapRef.current, {
+                        center,
+                        zoom: 17,
+                        zoomControl: true,
+                        zoomControlOptions: { position: maps.Position.TOP_LEFT },
+                        scaleControl: false,
+                        mapDataControl: false,
+                        mapTypeControl: false,
+                    });
+
+                    new maps.Marker({
+                        position: center,
+                        map,
+                        title: BIZ.name,
+                    });
+                })
+                .catch((error) => {
+                    console.warn("NAVER Maps load failed:", error);
+                    if (!cancelled) setMapFailed(true);
+                });
+
+            return () => { cancelled = true; };
+        }, []);
+
         const openKakaoChat = () => {
             if (window.Kakao?.Channel?.chat) {
                 try {
@@ -1333,13 +1429,22 @@
                     </Reveal>
                     <Reveal delay={150}>
                         <div style={{ position: "relative", aspectRatio: m ? "4/3" : "5/4", background: "var(--vb-bg)", border: "1px solid var(--vb-line)", overflow: "hidden" }}>
-                            {/* 임시 OSM iframe — 추후 NCP Naver Maps API 적용 시 교체 */}
-                            <iframe
-                                title="리드인 화명 용수초점 위치 — 화명신도시로 48"
-                                src="https://www.openstreetmap.org/export/embed.html?bbox=129.004522%2C35.225040%2C129.016522%2C35.233040&layer=mapnik&marker=35.229040%2C129.010522"
-                                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }}
-                                loading="lazy"
+                            <div
+                                ref={mapRef}
+                                role="region"
+                                aria-label="리드인 화명 용수초점 위치 지도"
+                                style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
                             />
+                            {mapFailed && (
+                                <div style={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", padding: 24, textAlign: "center", background: "var(--vb-bg)", color: "var(--vb-ink-2)", fontSize: 13, lineHeight: 1.8 }}>
+                                    <div>
+                                        네이버 지도를 불러오지 못했습니다.<br />
+                                        <a href={naverUrl} target="_blank" rel="noopener noreferrer" style={{ color: "var(--vb-ink)", fontWeight: 700 }}>
+                                            네이버 플레이스에서 위치 보기
+                                        </a>
+                                    </div>
+                                </div>
+                            )}
                             <a href={naverUrl} target="_blank" rel="noopener noreferrer" style={{ position: "absolute", top: 16, right: 16, background: "white", padding: "8px 12px", fontSize: 11, fontWeight: 600, textDecoration: "none", color: "var(--vb-ink)", display: "flex", alignItems: "center", gap: 6, boxShadow: "0 4px 12px rgba(0,0,0,0.15)" }}>
                                 <span style={{ background: "#03C75A", color: "white", padding: "1px 5px", borderRadius: 2, fontSize: 9 }}>N</span>
                                 네이버 플레이스에서 보기 →

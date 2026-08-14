@@ -46,8 +46,8 @@
     <link rel="manifest" href="/site.webmanifest">
 
     <!-- Theme Color -->
-    <meta name="theme-color" content="#1D3A2A"/>
-    <meta name="msapplication-TileColor" content="#1D3A2A"/>
+    <meta name="theme-color" content="#0F1A14"/>
+    <meta name="msapplication-TileColor" content="#0F1A14"/>
 
     <!-- Open Graph / Facebook / KakaoTalk -->
     <meta property="og:type" content="website"/>
@@ -264,12 +264,13 @@
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 
-    <!-- Preload Critical Assets (Hero 이미지만 critical) -->
-    <link rel="preload" href="assets/hero-image.png" as="image"/>
+    <!-- Preload Critical Assets (Hero LCP) — WebP preferred -->
+    <link rel="preload" href="assets/hero-image.webp" as="image" type="image/webp"/>
 
-    <!-- Fonts: Fraunces (display) + Noto Serif KR (Korean display) + JetBrains Mono (mono). Pretendard via jsdelivr (not on Google Fonts). -->
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,500;1,9..144,600&family=Noto+Serif+KR:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet"/>
+    <!-- Fonts: subset weights only (display + body). Pretendard via jsdelivr. -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,500;1,9..144,600&family=Noto+Serif+KR:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet" media="print" onload="this.media='all'"/>
+    <noscript><link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet"/></noscript>
 
     <!-- Kakao Channel Chat SDK (lightweight, no JS key required) -->
     <script defer src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.channel.min.js"
@@ -408,7 +409,7 @@
                 border-right: 1px solid rgba(255,255,255,0.18);
             }
             .bottom-bar-cta {
-                background: #E8A06B;
+                background: var(--vb-accent-2);
                 color: #FFFFFF;
                 font-weight: 700;
             }
@@ -647,7 +648,7 @@
                                     onMouseLeave={(e) => e.currentTarget.style.borderColor = "transparent"}
                                 >{k}</a>
                             ))}
-                            <a href="#consult" className="mono" style={{ background: "#E8A06B", color: "white", textDecoration: "none", padding: "12px 22px", fontSize: 12, letterSpacing: "0.15em", display: "inline-flex", alignItems: "center", gap: 8 }}>
+                            <a href="#consult" className="mono" style={{ background: "var(--vb-accent-2)", color: "white", textDecoration: "none", padding: "12px 22px", fontSize: 12, letterSpacing: "0.15em", display: "inline-flex", alignItems: "center", gap: 8 }}>
                                 상담 →
                             </a>
                         </div>
@@ -666,7 +667,7 @@
                             {links.map(([k, id]) => (
                                 <a key={id} href={`#${id}`} onClick={() => setMenu(false)} style={{ color: "var(--vb-ink)", textDecoration: "none", padding: "14px 8px", fontSize: 16, fontWeight: 500, borderBottom: "1px solid var(--vb-line)" }}>{k}</a>
                             ))}
-                            <a href="#consult" onClick={() => setMenu(false)} className="mono" style={{ background: "#E8A06B", color: "white", textDecoration: "none", padding: "16px", fontSize: 13, letterSpacing: "0.15em", textAlign: "center", marginTop: 12 }}>
+                            <a href="#consult" onClick={() => setMenu(false)} className="mono" style={{ background: "var(--vb-accent-2)", color: "white", textDecoration: "none", padding: "16px", fontSize: 13, letterSpacing: "0.15em", textAlign: "center", marginTop: 12 }}>
                                 상담 신청 →
                             </a>
                         </div>
@@ -714,21 +715,30 @@
                         {m && (
                             <Reveal delay={200}>
                                 <div style={{ aspectRatio: "16/9", overflow: "hidden", border: "1px solid var(--vb-line)", background: "var(--vb-paper)" }}>
-                                    <img src="assets/hero-image.png" alt="화명동 독서논술 교실 — 책을 읽는 아이" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} loading="eager" />
+                                    <picture>
+                                        <source srcSet="assets/hero-image.webp" type="image/webp" />
+                                        <img src="assets/hero-image.jpg" alt="화명동 독서논술 교실 — 책을 읽는 아이" width={512} height={512} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} loading="eager" fetchPriority="high" decoding="async" />
+                                    </picture>
                                 </div>
                             </Reveal>
                         )}
                         {!m && (
                             <Reveal delay={400}>
                                 <div style={{ aspectRatio: "3/4", overflow: "hidden", border: "1px solid var(--vb-line)", background: "var(--vb-paper)" }}>
-                                    <img src="assets/hero-image.png" alt="화명동 독서논술 교실 — 책을 읽는 아이" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} loading="eager" />
+                                    <picture>
+                                        <source srcSet="assets/hero-image.webp" type="image/webp" />
+                                        <img src="assets/hero-image.jpg" alt="화명동 독서논술 교실 — 책을 읽는 아이" width={512} height={512} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} loading="eager" fetchPriority="high" decoding="async" />
+                                    </picture>
                                 </div>
                             </Reveal>
                         )}
                         {!m && (
                             <Reveal delay={550}>
                                 <div style={{ aspectRatio: "3/4", overflow: "hidden", border: "1px solid var(--vb-line)", background: "var(--vb-paper)", marginTop: 60 }}>
-                                    <img src="assets/bookshelf.jpg" alt="리드인 화명 용수초점 교실 책장 — 한 사람의 책장을 만드는 곳" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} loading="lazy" />
+                                    <picture>
+                                        <source srcSet="assets/bookshelf.webp" type="image/webp" />
+                                        <img src="assets/bookshelf.jpg" alt="리드인 화명 용수초점 교실 책장 — 한 사람의 책장을 만드는 곳" width={960} height={1280} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} loading="lazy" decoding="async" />
+                                    </picture>
                                 </div>
                             </Reveal>
                         )}
@@ -959,7 +969,10 @@
                 <div style={{ maxWidth: 1240, margin: "0 auto", display: "grid", gridTemplateColumns: m ? "1fr" : "1fr 1fr", gap: m ? 32 : 60, alignItems: "center" }}>
                     <Reveal>
                         <div style={{ aspectRatio: "4/5", overflow: "hidden", border: "1px solid var(--vb-line)", background: "var(--vb-paper)", maxHeight: m ? 360 : "none" }}>
-                            <img src="assets/director-portrait.png" alt={`${BIZ.director} — 동화구연 1급, 그림책 테라피 지도자`} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} loading="lazy" />
+                            <picture>
+                                <source srcSet="assets/director-portrait.webp" type="image/webp" />
+                                <img src="assets/director-portrait.jpg" alt="동화구연·그림책으로 수업하는 교실 현장" width={1320} height={977} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 35%", display: "block" }} loading="lazy" decoding="async" />
+                            </picture>
                         </div>
                     </Reveal>
                     <Reveal delay={150}>

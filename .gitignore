@@ -3,7 +3,6 @@ design_handoff_readin_hwamyeong/
 
 # Node (build tooling only — site ships prebuilt assets/app.js)
 node_modules/
-package-lock.json
 npm-debug.log*
 
 # OS / editor 잡파일

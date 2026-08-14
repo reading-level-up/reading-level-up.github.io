@@ -1,6 +1,11 @@
 # Design handoff (raw) — 사용 후 별도 정리 결정 시까지 untracked
 design_handoff_readin_hwamyeong/
 
+# Node (build tooling only — site ships prebuilt assets/app.js)
+node_modules/
+package-lock.json
+npm-debug.log*
+
 # OS / editor 잡파일
 .DS_Store
 Thumbs.db

@@ -1,0 +1,20 @@
+{
+  "name": "readin-hwamyeong",
+  "private": true,
+  "description": "리드인 화명 용수초점 static site",
+  "scripts": {
+    "build": "node scripts/build-app.mjs",
+    "build:app": "node scripts/build-app.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reading-level-up/reading-level-up.github.io.git"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@babel/cli": "^7.29.7",
+    "@babel/core": "^7.29.7",
+    "@babel/preset-react": "^7.29.7",
+    "terser": "^5.50.0"
+  }
+}

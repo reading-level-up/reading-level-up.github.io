@@ -1,19 +1,51 @@
-# robots.txt for 화명 리드인
+# robots.txt for 리드인 화명 용수초점
 # https://readin-hwamyeong.kr
 
 User-agent: *
 Allow: /
 
-# Naver
+# Search engines
+User-agent: Googlebot
+Allow: /
+
 User-agent: Yeti
 Allow: /
 
-# Daum
 User-agent: Daum
 Allow: /
 
-# Google
-User-agent: Googlebot
+User-agent: Bingbot
+Allow: /
+
+# AI search / retrieval (citations)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
 Allow: /
 
 # Sitemap & RSS Feed

@@ -4,7 +4,8 @@
   "description": "리드인 화명 용수초점 static site",
   "scripts": {
     "build": "node scripts/build-app.mjs",
-    "build:app": "node scripts/build-app.mjs"
+    "build:app": "node scripts/build-app.mjs",
+    "vendor:fonts": "node scripts/vendor-fonts.mjs"
   },
   "repository": {
     "type": "git",

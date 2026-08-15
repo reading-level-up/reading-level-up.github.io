@@ -26,10 +26,6 @@
         postalCode: "46541",
     };
 
-    const ANSWER_CAPSULE =
-        "리드인 화명 용수초점은 부산 북구 화명동, 용수초에서 건널목 하나·도보 1–2분 거리의 독서논술 교실입니다. 초등 문해력·읽기 습관·읽기 유창성·발문부터 중등 독해까지, 유치부 그림책 테라피에서 독해 부스터로 1:1 진단 후 원장이 직강합니다. 진도가 아니라 한 권의 책을 끝까지 읽어내는 힘을 기릅니다.";
-
-
     /* ─────────────── External channels ─────────────── */
     const NAVER_URL = "https://naver.me/GwfEVFn4";
     const NAVER_MAP_CLIENT_ID = "g5krcmi7c6";
@@ -283,41 +279,6 @@
                     </div>
                 )}
             </header>
-        );
-    }
-
-    /* ─────────────── ANSWER CAPSULE (visible AEO summary) ─────────────── */
-    function AnswerCapsule({ accent }) {
-        const m = useMobile();
-        return (
-            <section
-                aria-label="교실 한눈에 보기"
-                style={{
-                    background: "var(--vb-bg)",
-                    borderTop: "1px solid var(--vb-line)",
-                    borderBottom: "1px solid var(--vb-line)",
-                    padding: m ? "28px 20px" : "36px 40px",
-                }}
-            >
-                <div style={{ maxWidth: 1240, margin: "0 auto" }}>
-                    <div className="mono" style={{ fontSize: 11, color: accent, letterSpacing: "0.25em", marginBottom: 14 }}>
-                        AT A GLANCE
-                    </div>
-                    <p style={{
-                        margin: 0,
-                        fontSize: m ? 15 : 17,
-                        lineHeight: 1.75,
-                        color: "var(--vb-ink)",
-                        fontWeight: 500,
-                        maxWidth: 920,
-                    }}>
-                        {ANSWER_CAPSULE}
-                    </p>
-                    <p className="mono" style={{ margin: "16px 0 0", fontSize: 12, color: "var(--vb-mute)", letterSpacing: "0.06em", lineHeight: 1.9 }}>
-                        {BIZ.address} ({BIZ.addressDetail}) · {BIZ.phone} · {BIZ.hours[0]} · {BIZ.hours[1]}
-                    </p>
-                </div>
-            </section>
         );
     }
 
@@ -1194,7 +1155,6 @@
                 <Nav accent={ACCENT} />
                 <main id="main">
                     <Hero accent={ACCENT} headline={headline} />
-                    <AnswerCapsule accent={ACCENT} />
                     <Manifesto accent={ACCENT} />
                     <Programs accent={ACCENT} />
                     <Director accent={ACCENT} />

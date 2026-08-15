@@ -17,12 +17,18 @@
         director: "이현진 원장",
         phone: "010-2811-4221",
         phoneRaw: "01028114221",
+        phoneAlt: "0507-1334-4221",
         address: "부산광역시 북구 화명신도시로 48",
         addressDetail: "현대2차아파트 단지 내",
-        hours: ["월–금 10:00 – 22:00", "토 10:00 – 14:00 (일 휴무)"],
+        hours: ["월–금 10:00 – 22:00", "토 10:00 – 14:00 (일·공휴일 휴무)"],
         bizNumber: "699-94-01680",
         ceo: "이현진",
+        postalCode: "46541",
     };
+
+    const ANSWER_CAPSULE =
+        "리드인 화명 용수초점은 부산 북구 화명동, 용수초에서 건널목 하나·도보 1–2분 거리의 독서논술 교실입니다. 초등 문해력·읽기 습관·읽기 유창성·발문부터 중등 독해까지, 유치부 그림책 테라피에서 독해 부스터로 1:1 진단 후 원장이 직강합니다. 진도가 아니라 한 권의 책을 끝까지 읽어내는 힘을 기릅니다.";
+
 
     /* ─────────────── External channels ─────────────── */
     const NAVER_URL = "https://naver.me/GwfEVFn4";
@@ -277,6 +283,41 @@
                     </div>
                 )}
             </header>
+        );
+    }
+
+    /* ─────────────── ANSWER CAPSULE (visible AEO summary) ─────────────── */
+    function AnswerCapsule({ accent }) {
+        const m = useMobile();
+        return (
+            <section
+                aria-label="교실 한눈에 보기"
+                style={{
+                    background: "var(--vb-bg)",
+                    borderTop: "1px solid var(--vb-line)",
+                    borderBottom: "1px solid var(--vb-line)",
+                    padding: m ? "28px 20px" : "36px 40px",
+                }}
+            >
+                <div style={{ maxWidth: 1240, margin: "0 auto" }}>
+                    <div className="mono" style={{ fontSize: 11, color: accent, letterSpacing: "0.25em", marginBottom: 14 }}>
+                        AT A GLANCE
+                    </div>
+                    <p style={{
+                        margin: 0,
+                        fontSize: m ? 15 : 17,
+                        lineHeight: 1.75,
+                        color: "var(--vb-ink)",
+                        fontWeight: 500,
+                        maxWidth: 920,
+                    }}>
+                        {ANSWER_CAPSULE}
+                    </p>
+                    <p className="mono" style={{ margin: "16px 0 0", fontSize: 12, color: "var(--vb-mute)", letterSpacing: "0.06em", lineHeight: 1.9 }}>
+                        {BIZ.address} ({BIZ.addressDetail}) · {BIZ.phone} · {BIZ.hours[0]} · {BIZ.hours[1]}
+                    </p>
+                </div>
+            </section>
         );
     }
 
@@ -614,7 +655,7 @@
             { q: "Q.", t: "책을 강제로 읽히면 정말 효과가 있을까요?", a: "강요된 독서는 거부감을 학습시킵니다. 우리는 아이가 스스로 다음 페이지를 넘기게 되는 순간을 설계합니다. 그림책 테라피·1:1 진단을 통해 아이의 흥미를 먼저 찾고, 그 위에 어휘와 사고력을 쌓습니다." },
             { q: "Q.", t: "중학생 성적이 갑자기 무너졌습니다. 왜죠?", a: "지문 한 단락을 정확히 이해하지 못하면, 어떤 과목도 풀어낼 수 없습니다. 문해력은 모든 과목의 기반입니다. 독해 부스터 프로그램은 교과서·시험 지문을 정확히 이해하는 훈련을 제공합니다." },
             { q: "Q.", t: "대형 학원에 보내고 있는데, 충분하지 않을까요?", a: "대형 학원은 진도, 우리는 진단입니다. 두 가지는 서로 다른 도구입니다. 보조 강사 없이 원장이 끝까지 함께하므로 한 아이의 약점을 정확히 짚어드립니다." },
-            { q: "Q.", t: "위치가 어디인가요?", a: "부산 북구 화명신도시로 48 (현대2차아파트 단지 내)에 위치합니다. 용수초등학교에서 건널목 하나, 단지 내 통로로 도보 1–2분 거리예요. 용수중·화명중 인근, 수정역·화명역 도보권." },
+            { q: "Q.", t: "위치가 어디인가요?", a: "부산 북구 화명신도시로 48 (현대2차아파트 단지 내)에 위치합니다. 용수초등학교에서 건널목 하나, 단지 내 통로로 도보 1–2분 거리예요. 용수중·화명중 인근, 수정역·화명역 도보권. 공휴일은 휴무입니다." },
             { q: "Q.", t: "무료 레벨 테스트는 어떻게 신청하나요?", a: "이 페이지 하단 상담 신청 폼에 보호자 성함·아이 학년·고민·연락처를 남겨주시면 카카오톡 또는 네이버 플레이스로 이어드립니다. 1:1 진단을 통해 아이의 현재 수준을 파악하고 개인별 커리큘럼을 제안합니다." },
         ];
         return (
@@ -1153,6 +1194,7 @@
                 <Nav accent={ACCENT} />
                 <main id="main">
                     <Hero accent={ACCENT} headline={headline} />
+                    <AnswerCapsule accent={ACCENT} />
                     <Manifesto accent={ACCENT} />
                     <Programs accent={ACCENT} />
                     <Director accent={ACCENT} />

@@ -995,7 +995,7 @@
 
                     const infoWindow = new maps.InfoWindow({
                         content: `
-                            <a href="${naverUrl}" target="_blank" rel="noopener noreferrer" style="display:block;min-width:190px;padding:12px 14px;text-decoration:none;color:#1D3A2A;font-family:Pretendard,-apple-system,BlinkMacSystemFont,sans-serif;">
+                            <a href="${naverUrl}" target="_blank" rel="noopener noreferrer" style="display:block;min-width:190px;padding:12px 14px;text-decoration:none;color:#1D3A2A;font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,sans-serif;">
                                 <strong style="display:block;font-size:13px;margin-bottom:4px;">${BIZ.name}</strong>
                                 <span style="display:block;font-size:12px;color:#526158;line-height:1.45;">네이버 플레이스에서 보기</span>
                             </a>

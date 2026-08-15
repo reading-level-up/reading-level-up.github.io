@@ -1,0 +1,3 @@
+Fraunces and Noto Serif KR font files are sourced from Google Fonts
+and redistributed under their respective open font licenses (OFL).
+Self-hosted for performance; unicode-range subsets preserved.
